@@ -1,0 +1,23 @@
+.login-card-body,
+.register-card-body {
+   background-color: #6081c4 !important;
+}
+
+#form-password .input-group > .input-group-append > .input-group-text > span:hover {
+   cursor: pointer;
+}
+
+.error-validation {
+   width: 100%;
+   margin-top: 0.25rem;
+   font-size: 80%;
+   color: #dc3545;
+}
+
+.table > tbody > tr > td {
+   vertical-align: middle;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+   height: auto !important;
+}

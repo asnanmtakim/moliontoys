@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Welcome');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,7 +31,40 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->set404Override(function ($message = null) {
+    helper(['auth', 'app_helper']);
+    if ($_SERVER['CI_ENVIRONMENT'] == 'production') {
+        $message = 'Kemungkinan halaman telah dihapus, atau Anda salah menulis URL.';
+    }
+    return view('errors/error404', ['title' => 'Error 404', 'page' => 'error404', 'message' => $message]);
+});
+
+// Call All Routes
+$db = \Config\Database::connect();
+$builder = $db->table('app_routes');
+$output = $builder->orderBy('route_order', 'ASC')->get()->getResultArray();
+foreach ($output as $out) {
+    if ($out['route_request'] == 'get') {
+        if ($out['route_options'] == 0) {
+            $routes->get($out['route_from'], $out['route_to']);
+        } else {
+            $optionKeys = explode(';', $out['route_option_keys']);
+            $optionValues = explode(';', $out['route_option_values']);
+            $options = array_combine($optionKeys, $optionValues);
+            $routes->get($out['route_from'], $out['route_to'], $options);
+        }
+    }
+    if ($out['route_request'] == 'post') {
+        if ($out['route_options'] == 0) {
+            $routes->post($out['route_from'], $out['route_to']);
+        } else {
+            $optionKeys = explode(';', $out['route_option_keys']);
+            $optionValues = explode(';', $out['route_option_values']);
+            $options = array_combine($optionKeys, $optionValues);
+            $routes->post($out['route_from'], $out['route_to'], $options);
+        }
+    }
+}
 
 /*
  * --------------------------------------------------------------------

@@ -68,7 +68,7 @@ function app_identity()
       'app_title' => $appTitle,
       'app_name' => $output[5]['conf_value'],
       'app_icon' => base_url() . '/' . $output[4]['conf_value'],
-      'app_descryption' => $output[3]['conf_value'],
+      'app_description' => $output[3]['conf_value'],
       'app_brand' => base_url() . '/' . $output[2]['conf_value'],
       'app_about_us' => $output[1]['conf_value'],
       'app_about' => $output[0]['conf_value'],

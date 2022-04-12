@@ -10,7 +10,6 @@ $app_identity = app_identity();
 
    <title><?= $app_identity['app_title']; ?> - <?= $title; ?></title>
    <meta content="" name="description">
-
    <meta content="" name="keywords">
 
    <!-- Favicons -->
@@ -18,22 +17,32 @@ $app_identity = app_identity();
    <link href="<?= $app_identity['app_icon']; ?>" rel="apple-touch-icon">
 
    <!-- Google Fonts -->
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
    <!-- Vendor CSS Files -->
    <link href="<?= base_url(); ?>/assets/welcome/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <link href="<?= base_url(); ?>/assets/welcome/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
    <link href="<?= base_url(); ?>/assets/welcome/vendor/aos/aos.css" rel="stylesheet">
-   <link href="<?= base_url(); ?>/assets/welcome/vendor/remixicon/remixicon.css" rel="stylesheet">
-   <link href="<?= base_url(); ?>/assets/welcome/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
    <link href="<?= base_url(); ?>/assets/welcome/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+   <link href="<?= base_url(); ?>/assets/welcome/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+   <!-- Variables CSS Files. Uncomment your preferred color scheme -->
+   <!-- <link href="<?= base_url(); ?>/assets/welcome/css/variables.css" rel="stylesheet"> -->
+   <!-- <link href="<?= base_url(); ?>/assets/welcome/css/variables-blue.css" rel="stylesheet"> -->
+   <!-- <link href="<?= base_url(); ?>/assets/welcome/css/variables-green.css" rel="stylesheet"> -->
+   <link href="<?= base_url(); ?>/assets/welcome/css/variables-orange.css" rel="stylesheet">
+   <!-- <link href="<?= base_url(); ?>/assets/welcome/css/variables-purple.css" rel="stylesheet"> -->
+   <!-- <link href="<?= base_url(); ?>/assets/welcome/css/variables-red.css" rel="stylesheet"> -->
+   <!-- <link href="<?= base_url(); ?>/assets/welcome/css/variables-pink.css" rel="stylesheet"> -->
 
    <!-- Template Main CSS File -->
-   <link href="<?= base_url(); ?>/assets/welcome/css/style.css" rel="stylesheet">
+   <link href="<?= base_url(); ?>/assets/welcome/css/main.css" rel="stylesheet">
 
    <!-- =======================================================
-  * Template Name: FlexStart - v1.7.0
-  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Template Name: HeroBiz - v2.1.0
+  * Template URL: https://bootstrapmade.com/herobiz-bootstrap-business-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
@@ -42,271 +51,835 @@ $app_identity = app_identity();
 <body>
 
    <!-- ======= Header ======= -->
-   <header id="header" class="header fixed-top">
-      <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+   <header id="header" class="header fixed-top" data-scrollto-offset="0">
+      <div class="container-fluid d-flex align-items-center justify-content-between">
 
-         <a href="<?= base_url(); ?>" class="logo d-flex align-items-center">
-            <img src="<?= $app_identity['app_brand']; ?>" alt="">
-            <span><?= $app_identity['app_title']; ?></span>
+         <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <img src="<?= $app_identity['app_icon']; ?>" alt="Logo">
+            <h1 class="mb-0"><?= $app_identity['app_title']; ?></h1>
          </a>
 
          <nav id="navbar" class="navbar">
             <ul>
-               <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-               <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
-               <li><a class="nav-link scrollto" href="#services">Pelayanan</a></li>
-               <li><a class="nav-link scrollto" href="#team">Tim Kerja</a></li>
-               <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-               <li><a class="getstarted scrollto" href="<?= base_url(); ?>/login">Login</a></li>
+               <li><a class="nav-link scrollto" href="#">Beranda</a></li>
+               <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
+               <li><a class="nav-link scrollto" href="#portfolio">Produk</a></li>
+               <li><a class="nav-link scrollto" href="#team">Tim</a></li>
+               <li><a href="blog.html">Blog</a></li>
+               <li><a class="nav-link scrollto" href="#faq">Faq</a></li>
+               <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
+            <i class="bi bi-list mobile-nav-toggle d-none"></i>
          </nav><!-- .navbar -->
-
       </div>
    </header><!-- End Header -->
 
    <!-- ======= Hero Section ======= -->
-   <section id="hero" class="hero d-flex align-items-center">
+   <section id="hero" class="hero carousel  carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <?php foreach ($home as $hm) : ?>
+         <div class="carousel-item <?= $hm['active_home'] == 1 ? 'active' : ''; ?>">
+            <div class="container">
+               <div class="row justify-content-center gy-6">
 
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-6 d-flex flex-column justify-content-center">
-               <h1 data-aos="fade-up"><?= $app_identity['app_name']; ?></h1>
-               <h2 data-aos="fade-up" data-aos-delay="400"><?= $app_identity['app_about']; ?></h2>
-               <!-- <div data-aos="fade-up" data-aos-delay="600">
-                  <div class="text-center text-lg-start">
-                     <a href="<?= base_url(); ?>/login" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                        <span>Login</span>
-                        <i class="bi bi-arrow-right"></i>
-                     </a>
+                  <div class="col-lg-5 col-md-8">
+                     <img src="<?= base_url(); ?>/uploads/home/<?= $hm['image_home']; ?>" alt="" class="img-fluid img">
                   </div>
-               </div> -->
-            </div>
-            <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-               <img src="<?= base_url(); ?>/assets/welcome/img/hero.png" class="img-fluid" alt="">
-            </div>
-         </div>
-      </div>
 
-   </section><!-- End Hero -->
+                  <div class="col-lg-9 text-center">
+                     <h2><?= $hm['title_home']; ?></h2>
+                     <p><?= $hm['description_home']; ?></p>
+                  </div>
+
+               </div>
+            </div>
+         </div><!-- End Carousel Item -->
+      <?php endforeach; ?>
+      <a class="carousel-control-prev" href="#hero" role="button" data-bs-slide="prev">
+         <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#hero" role="button" data-bs-slide="next">
+         <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+      <ol class="carousel-indicators"></ol>
+
+   </section><!-- End Hero Section -->
 
    <main id="main">
+
       <!-- ======= About Section ======= -->
       <section id="about" class="about">
-
          <div class="container" data-aos="fade-up">
-            <div class="row gx-0">
 
-               <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-                  <div class="content">
-                     <h3>Tentang kami</h3>
-                     <?= $app_identity['app_about_us']; ?>
+            <div class="section-header">
+               <h2>Tentang Kami</h2>
+               <p>Informasi tentang perusahaan kami</p>
+            </div>
+
+            <div class="row g-4 g-lg-5" data-aos="fade-up" data-aos-delay="200">
+
+               <div class="col-lg-5">
+                  <div class="about-img">
+                     <img src="<?= $app_identity['app_icon']; ?>" class="img-fluid" alt="">
                   </div>
                </div>
 
-               <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-                  <img src="<?= base_url(); ?>/assets/welcome/img/about.png" class="img-fluid" alt="">
+               <div class="col-lg-7">
+                  <h3 class="pt-0 pt-lg-5">Tentang <?= $app_identity['app_name']; ?></h3>
+
+                  <!-- Tabs -->
+                  <ul class="nav nav-pills mb-3">
+                     <li><a class="nav-link active" data-bs-toggle="pill" href="#info">Info Singkat</a></li>
+                     <li><a class="nav-link" data-bs-toggle="pill" href="#visi">Visi</a></li>
+                     <li><a class="nav-link" data-bs-toggle="pill" href="#misi">Misi</a></li>
+                  </ul><!-- End Tabs -->
+
+                  <!-- Tab Content -->
+                  <div class="tab-content">
+
+                     <div class="tab-pane fade show active" id="info">
+                        <p class="text-justify"><?= $about['description_about']; ?></p>
+                     </div><!-- End Tab 1 Content -->
+
+                     <div class="tab-pane fade show" id="visi">
+
+                        <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+
+                        <div class="d-flex align-items-center mt-4">
+                           <i class="bi bi-check2"></i>
+                           <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                        </div>
+                        <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+
+                        <div class="d-flex align-items-center mt-4">
+                           <i class="bi bi-check2"></i>
+                           <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                        </div>
+                        <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+
+                        <div class="d-flex align-items-center mt-4">
+                           <i class="bi bi-check2"></i>
+                           <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+                        </div>
+                        <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
+
+                     </div><!-- End Tab 2 Content -->
+
+                     <div class="tab-pane fade show" id="misi">
+
+                        <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
+
+                        <div class="d-flex align-items-center mt-4">
+                           <i class="bi bi-check2"></i>
+                           <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
+                        </div>
+                        <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
+
+                        <div class="d-flex align-items-center mt-4">
+                           <i class="bi bi-check2"></i>
+                           <h4>Incidunt non veritatis illum ea ut nisi</h4>
+                        </div>
+                        <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+
+                        <div class="d-flex align-items-center mt-4">
+                           <i class="bi bi-check2"></i>
+                           <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
+                        </div>
+                        <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
+
+                     </div><!-- End Tab 3 Content -->
+
+                  </div>
+
                </div>
 
             </div>
-         </div>
 
+         </div>
       </section><!-- End About Section -->
 
-      <!-- ======= Counts Section ======= -->
-      <!-- <section id="counts" class="counts">
+      <!-- ======= Clients Section ======= -->
+      <section id="clients" class="clients">
+         <div class="container" data-aos="zoom-out">
+
+            <div class="clients-slider swiper">
+               <div class="swiper-wrapper align-items-center">
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-1.png" class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-2.png" class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-3.png" class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-4.png" class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-5.png" class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-6.png" class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-7.png" class="img-fluid" alt=""></div>
+                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-8.png" class="img-fluid" alt=""></div>
+               </div>
+            </div>
+
+         </div>
+      </section><!-- End Clients Section -->
+
+      <!-- ======= Features Section ======= -->
+      <section id="features" class="features">
          <div class="container" data-aos="fade-up">
 
-            <div class="row gy-4">
+            <div class="section-header">
+               <h2>Sertifikat dan Legalitas</h2>
+               <p>Sertifikat dan legalisasi dari badan Nasional dan Internasional</p>
+            </div>
 
-               <div class="col-lg-3 col-md-6">
-                  <div class="count-box">
-                     <i class="bi bi-emoji-smile"></i>
-                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Happy Clients</p>
+            <ul class="nav nav-tabs row gy-4 d-flex">
+
+               <li class="nav-item col-6 col-md-4 col-lg-2">
+                  <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                     <i class="bi bi-binoculars color-cyan"></i>
+                     <h4>Modinest</h4>
+                  </a>
+               </li><!-- End Tab 1 Nav -->
+
+               <li class="nav-item col-6 col-md-4 col-lg-2">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+                     <i class="bi bi-box-seam color-indigo"></i>
+                     <h4>Undaesenti</h4>
+                  </a>
+               </li><!-- End Tab 2 Nav -->
+
+               <li class="nav-item col-6 col-md-4 col-lg-2">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+                     <i class="bi bi-brightness-high color-teal"></i>
+                     <h4>Pariatur</h4>
+                  </a>
+               </li><!-- End Tab 3 Nav -->
+
+               <li class="nav-item col-6 col-md-4 col-lg-2">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+                     <i class="bi bi-command color-red"></i>
+                     <h4>Nostrum</h4>
+                  </a>
+               </li><!-- End Tab 4 Nav -->
+
+               <li class="nav-item col-6 col-md-4 col-lg-2">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-5">
+                     <i class="bi bi-easel color-blue"></i>
+                     <h4>Adipiscing</h4>
+                  </a>
+               </li><!-- End Tab 5 Nav -->
+
+               <li class="nav-item col-6 col-md-4 col-lg-2">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-6">
+                     <i class="bi bi-map color-orange"></i>
+                     <h4>Reprehit</h4>
+                  </a>
+               </li><!-- End Tab 6 Nav -->
+
+            </ul>
+
+            <div class="tab-content">
+
+               <div class="tab-pane active show" id="tab-1">
+                  <div class="row gy-4">
+                     <div class="col-lg-8 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+                        <h3>Modinest</h3>
+                        <p class="fst-italic">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                           magna aliqua.
+                        </p>
+                        <ul>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                        <p>
+                           Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                           velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                           culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                     </div>
+                     <div class="col-lg-4 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/features-1.svg" alt="" class="img-fluid">
                      </div>
                   </div>
-               </div>
+               </div><!-- End Tab Content 1 -->
 
-               <div class="col-lg-3 col-md-6">
-                  <div class="count-box">
-                     <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
-                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Projects</p>
+               <div class="tab-pane" id="tab-2">
+                  <div class="row gy-4">
+                     <div class="col-lg-8 order-2 order-lg-1">
+                        <h3>Undaesenti</h3>
+                        <p>
+                           Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                           velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                           culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                        <p class="fst-italic">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                           magna aliqua.
+                        </p>
+                        <ul>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                     </div>
+                     <div class="col-lg-4 order-1 order-lg-2 text-center">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/features-2.svg" alt="" class="img-fluid">
                      </div>
                   </div>
-               </div>
+               </div><!-- End Tab Content 2 -->
 
-               <div class="col-lg-3 col-md-6">
-                  <div class="count-box">
-                     <i class="bi bi-headset" style="color: #15be56;"></i>
-                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Hours Of Support</p>
+               <div class="tab-pane" id="tab-3">
+                  <div class="row gy-4">
+                     <div class="col-lg-8 order-2 order-lg-1">
+                        <h3>Pariatur</h3>
+                        <p>
+                           Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                           velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                           culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                        <ul>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                        </ul>
+                        <p class="fst-italic">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                           magna aliqua.
+                        </p>
+                     </div>
+                     <div class="col-lg-4 order-1 order-lg-2 text-center">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/features-3.svg" alt="" class="img-fluid">
                      </div>
                   </div>
-               </div>
+               </div><!-- End Tab Content 3 -->
 
-               <div class="col-lg-3 col-md-6">
-                  <div class="count-box">
-                     <i class="bi bi-people" style="color: #bb0852;"></i>
-                     <div>
-                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                        <p>Hard Workers</p>
+               <div class="tab-pane" id="tab-4">
+                  <div class="row gy-4">
+                     <div class="col-lg-8 order-2 order-lg-1">
+                        <h3>Nostrum</h3>
+                        <p>
+                           Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                           velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                           culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                        <p class="fst-italic">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                           magna aliqua.
+                        </p>
+                        <ul>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                     </div>
+                     <div class="col-lg-4 order-1 order-lg-2 text-center">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/features-4.svg" alt="" class="img-fluid">
                      </div>
                   </div>
-               </div>
+               </div><!-- End Tab Content 4 -->
+
+               <div class="tab-pane" id="tab-5">
+                  <div class="row gy-4">
+                     <div class="col-lg-8 order-2 order-lg-1">
+                        <h3>Adipiscing</h3>
+                        <p>
+                           Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                           velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                           culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                        <p class="fst-italic">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                           magna aliqua.
+                        </p>
+                        <ul>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                     </div>
+                     <div class="col-lg-4 order-1 order-lg-2 text-center">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/features-5.svg" alt="" class="img-fluid">
+                     </div>
+                  </div>
+               </div><!-- End Tab Content 5 -->
+
+               <div class="tab-pane" id="tab-6">
+                  <div class="row gy-4">
+                     <div class="col-lg-8 order-2 order-lg-1">
+                        <h3>Reprehit</h3>
+                        <p>
+                           Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                           velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                           culpa qui officia deserunt mollit anim id est laborum
+                        </p>
+                        <p class="fst-italic">
+                           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                           magna aliqua.
+                        </p>
+                        <ul>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+                           <li><i class="bi bi-check-circle-fill"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                        </ul>
+                     </div>
+                     <div class="col-lg-4 order-1 order-lg-2 text-center">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/features-6.svg" alt="" class="img-fluid">
+                     </div>
+                  </div>
+               </div><!-- End Tab Content 6 -->
 
             </div>
 
          </div>
-      </section> -->
-      <!-- End Counts Section -->
+      </section><!-- End Features Section -->
 
-      <!-- ======= Services Section ======= -->
-      <section id="services" class="services">
+      <!-- ======= Portfolio Section ======= -->
+      <section id="portfolio" class="portfolio" data-aos="fade-up">
 
-         <div class="container" data-aos="fade-up">
+         <div class="container">
 
-            <header class="section-header">
-               <h2>Pelayanan</h2>
-               <p>Pelayanan Kami</p>
-            </header>
-
-            <div class="row gy-4">
-
-               <div class="col-lg-4 col-md-6" id="pelayanan_rj" data-aos="fade-up" data-aos-delay="200">
-                  <div class="service-box blue">
-                     <i class="ri-stethoscope-line icon"></i>
-                     <h3>Rawat Jalan</h3>
-                     <p>Pelayanan medis kepada seorang pasien untuk tujuan pengamatan, diagnosis, pengobatan, rehabilitasi, dan pelayanan kesehatan lainnya, tanpa mengharuskan pasien tersebut dirawat inap.</p>
-                  </div>
-               </div>
-
-               <div class="col-lg-4 col-md-6" id="pelayanan_ri" data-aos="fade-up" data-aos-delay="300">
-                  <div class="service-box orange">
-                     <i class="ri-heart-pulse-line icon"></i>
-                     <h3>Rawat Inap</h3>
-                     <p>Proses perangkapan pasien oleh tenaga kesehatan profesional akibat penyakit tertentu, di mana pasien diinapkan di suatu ruangan di rumah sakit . Ruang rawat inap adalah ruang tempat pasien dirawat.</p>
-                  </div>
-               </div>
-
-               <div class="col-lg-4 col-md-6" id="pelayanan_ugd" data-aos="fade-up" data-aos-delay="500">
-                  <div class="service-box red">
-                     <i class="ri-first-aid-kit-line icon"></i>
-                     <h3>Unit Gawat Darurat</h3>
-                     <p>Penanganan awal pasien, sesuai dengan tingkat kegawatannya.</p>
-                  </div>
-               </div>
-
+            <div class="section-header">
+               <h2>Portfolio</h2>
+               <p>Non hic nulla eum consequatur maxime ut vero memo vero totam officiis pariatur eos dolorum sed fug dolorem est possimus esse quae repudiandae. Dolorem id enim officiis sunt deserunt esse soluta consequatur quaerat</p>
             </div>
 
          </div>
 
-      </section><!-- End Services Section -->
+         <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+               <ul class="portfolio-flters">
+                  <li data-filter="*" class="filter-active">All</li>
+                  <li data-filter=".filter-app">App</li>
+                  <li data-filter=".filter-product">Product</li>
+                  <li data-filter=".filter-branding">Branding</li>
+                  <li data-filter=".filter-books">Books</li>
+               </ul><!-- End Portfolio Filters -->
+
+               <div class="row g-0 portfolio-container">
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>App 1</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/product-1.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Product 1</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Branding 1</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/books-1.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Books 1</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/app-2.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>App 2</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/product-2.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Product 2</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Branding 2</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/books-2.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Books 2</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/app-3.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>App 3</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/product-3.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Product 3</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Branding 3</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
+                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/books-3.jpg" class="img-fluid" alt="">
+                     <div class="portfolio-info">
+                        <h4>Books 3</h4>
+                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                     </div>
+                  </div><!-- End Portfolio Item -->
+
+               </div><!-- End Portfolio Container -->
+
+            </div>
+
+         </div>
+      </section><!-- End Portfolio Section -->
 
       <!-- ======= Team Section ======= -->
       <section id="team" class="team">
+         <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+               <h2>Our Team</h2>
+               <p>Architecto nobis eos vel nam quidem vitae temporibus voluptates qui hic deserunt iusto omnis nam voluptas asperiores sequi tenetur dolores incidunt enim voluptatem magnam cumque fuga.</p>
+            </div>
+
+            <div class="row gy-5">
+
+               <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+                  <div class="team-member">
+                     <div class="member-img">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/team/team-1.jpg" class="img-fluid" alt="">
+                     </div>
+                     <div class="member-info">
+                        <div class="social">
+                           <a href=""><i class="bi bi-twitter"></i></a>
+                           <a href=""><i class="bi bi-facebook"></i></a>
+                           <a href=""><i class="bi bi-instagram"></i></a>
+                           <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <h4>Walter White</h4>
+                        <span>Chief Executive Officer</span>
+                     </div>
+                  </div>
+               </div><!-- End Team Member -->
+
+               <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
+                  <div class="team-member">
+                     <div class="member-img">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/team/team-2.jpg" class="img-fluid" alt="">
+                     </div>
+                     <div class="member-info">
+                        <div class="social">
+                           <a href=""><i class="bi bi-twitter"></i></a>
+                           <a href=""><i class="bi bi-facebook"></i></a>
+                           <a href=""><i class="bi bi-instagram"></i></a>
+                           <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <h4>Sarah Jhonson</h4>
+                        <span>Product Manager</span>
+                     </div>
+                  </div>
+               </div><!-- End Team Member -->
+
+               <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
+                  <div class="team-member">
+                     <div class="member-img">
+                        <img src="<?= base_url(); ?>/assets/welcome/img/team/team-3.jpg" class="img-fluid" alt="">
+                     </div>
+                     <div class="member-info">
+                        <div class="social">
+                           <a href=""><i class="bi bi-twitter"></i></a>
+                           <a href=""><i class="bi bi-facebook"></i></a>
+                           <a href=""><i class="bi bi-instagram"></i></a>
+                           <a href=""><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <h4>William Anderson</h4>
+                        <span>CTO</span>
+                     </div>
+                  </div>
+               </div><!-- End Team Member -->
+
+            </div>
+
+         </div>
+      </section><!-- End Team Section -->
+
+      <!-- ======= Recent Blog Posts Section ======= -->
+      <section id="recent-blog-posts" class="recent-blog-posts">
 
          <div class="container" data-aos="fade-up">
 
-            <header class="section-header">
-               <h2>Tim Kerja</h2>
-               <p>Tim Kerja Kami</p>
-            </header>
+            <div class="section-header">
+               <h2>Blog</h2>
+               <p>Recent posts form our Blog</p>
+            </div>
 
-            <div class="row gy-4">
-               <?php
-               $delay = 100;
-               foreach ($dokter as $dkr) :
-               ?>
-                  <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="<?= $delay; ?>">
-                     <div class="member">
-                        <div class="member-img">
-                           <img src="<?= base_url(); ?>/uploads/image_user/<?= $dkr->image_user; ?>" class="img-fluid" alt="Image Dokter">
-                           <div class="social">
-                              <a href="mailto: <?= $dkr->email; ?>"><i class="bi bi-envelope"></i></a>
-                           </div>
-                        </div>
-                        <div class="member-info">
-                           <h4><?= $dkr->fullname; ?></h4>
-                           <span>Dokter <?= $dkr->specialist; ?></span>
-                        </div>
+            <div class="row">
+
+               <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                  <div class="post-box">
+                     <div class="post-img"><img src="<?= base_url(); ?>/assets/welcome/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
+                     <div class="meta">
+                        <span class="post-date">Tue, December 12</span>
+                        <span class="post-author"> / Julia Parker</span>
                      </div>
+                     <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
+                     <p>Illum voluptas ab enim placeat. Adipisci enim velit nulla. Vel omnis laudantium. Asperiores eum ipsa est officiis. Modi cupiditate exercitationem qui magni est...</p>
+                     <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                   </div>
-               <?php
-                  $delay = $delay + 100;
-               endforeach;
-               ?>
+               </div>
+
+               <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                  <div class="post-box">
+                     <div class="post-img"><img src="<?= base_url(); ?>/assets/welcome/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
+                     <div class="meta">
+                        <span class="post-date">Fri, September 05</span>
+                        <span class="post-author"> / Mario Douglas</span>
+                     </div>
+                     <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
+                     <p>Voluptatem nesciunt omnis libero autem tempora enim ut ipsam id. Odit quia ab eum assumenda. Quisquam omnis aliquid necessitatibus tempora consectetur doloribus...</p>
+                     <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                  </div>
+               </div>
+
+               <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
+                  <div class="post-box">
+                     <div class="post-img"><img src="<?= base_url(); ?>/assets/welcome/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
+                     <div class="meta">
+                        <span class="post-date">Tue, July 27</span>
+                        <span class="post-author"> / Lisa Hunter</span>
+                     </div>
+                     <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
+                     <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
+                     <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                  </div>
+               </div>
 
             </div>
 
          </div>
 
-      </section><!-- End Team Section -->
+      </section><!-- End Recent Blog Posts Section -->
+
+      <!-- ======= F.A.Q Section ======= -->
+      <section id="faq" class="faq">
+         <div class="container-fluid" data-aos="fade-up">
+
+            <div class="row gy-4">
+
+               <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+
+                  <div class="content px-xl-5">
+                     <h3>Frequently Asked <strong>Questions</strong></h3>
+                     <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                     </p>
+                  </div>
+
+                  <div class="accordion accordion-flush px-xl-5" id="faqlist">
+
+                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="accordion-header">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                              <i class="bi bi-question-circle question-icon"></i>
+                              Non consectetur a erat nam at lectus urna duis?
+                           </button>
+                        </h3>
+                        <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                           <div class="accordion-body">
+                              Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                           </div>
+                        </div>
+                     </div><!-- # Faq item-->
+
+                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="accordion-header">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                              <i class="bi bi-question-circle question-icon"></i>
+                              Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
+                           </button>
+                        </h3>
+                        <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                           <div class="accordion-body">
+                              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                           </div>
+                        </div>
+                     </div><!-- # Faq item-->
+
+                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                        <h3 class="accordion-header">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                              <i class="bi bi-question-circle question-icon"></i>
+                              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
+                           </button>
+                        </h3>
+                        <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                           <div class="accordion-body">
+                              Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                           </div>
+                        </div>
+                     </div><!-- # Faq item-->
+
+                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
+                        <h3 class="accordion-header">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
+                              <i class="bi bi-question-circle question-icon"></i>
+                              Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
+                           </button>
+                        </h3>
+                        <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                           <div class="accordion-body">
+                              <i class="bi bi-question-circle question-icon"></i>
+                              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                           </div>
+                        </div>
+                     </div><!-- # Faq item-->
+
+                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="600">
+                        <h3 class="accordion-header">
+                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
+                              <i class="bi bi-question-circle question-icon"></i>
+                              Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
+                           </button>
+                        </h3>
+                        <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                           <div class="accordion-body">
+                              Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
+                           </div>
+                        </div>
+                     </div><!-- # Faq item-->
+
+                  </div>
+
+               </div>
+
+               <div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("<?= base_url(); ?>/assets/welcome/img/faq.jpg");'>&nbsp;</div>
+            </div>
+
+         </div>
+      </section><!-- End F.A.Q Section -->
 
       <!-- ======= Contact Section ======= -->
       <section id="contact" class="contact">
+         <div class="container">
 
-         <div class="container" data-aos="fade-up">
-
-            <header class="section-header">
-               <h2>Contact</h2>
-               <p>Hubungi Kami</p>
-            </header>
-
-            <div class="row gy-4">
-
-               <div class="col-lg-6">
-
-                  <div class="row gy-4">
-                     <div class="col-md-6">
-                        <div class="info-box">
-                           <i class="bi bi-geo-alt"></i>
-                           <h3>Alamat</h3>
-                           <p><?= $app_identity['app_address']; ?></p>
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <div class="info-box">
-                           <i class="bi bi-telephone"></i>
-                           <h3>Telp</h3>
-                           <p><?= $app_identity['app_phone']; ?><br>+6285230700422</p>
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <div class="info-box">
-                           <i class="bi bi-envelope"></i>
-                           <h3>Email</h3>
-                           <p><?= $app_identity['app_email']; ?></p>
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <div class="info-box">
-                           <i class="bi bi-clock"></i>
-                           <h3>Jam Buka</h3>
-                           <p>Setiap Hari Buka 24 Jam</p>
-                        </div>
-                     </div>
-                  </div>
-
-               </div>
-
-               <div class="col-lg-6">
-                  <div class="php-email-form">
-                     <div class="ratio ratio-4x3">
-                        <iframe src="<?= $app_identity['app_maps']; ?>" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                     </div>
-                  </div>
-
-               </div>
-
+            <div class="section-header">
+               <h2>Contact Us</h2>
+               <p>Ea vitae aspernatur deserunt voluptatem impedit deserunt magnam occaecati dssumenda quas ut ad dolores adipisci aliquam.</p>
             </div>
 
          </div>
 
+         <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+         </div><!-- End Google Maps -->
+
+         <div class="container">
+
+            <div class="row gy-5 gx-lg-5">
+
+               <div class="col-lg-4">
+
+                  <div class="info">
+                     <h3>Get in touch</h3>
+                     <p>Et id eius voluptates atque nihil voluptatem enim in tempore minima sit ad mollitia commodi minus.</p>
+
+                     <div class="info-item d-flex">
+                        <i class="bi bi-geo-alt flex-shrink-0"></i>
+                        <div>
+                           <h4>Location:</h4>
+                           <p>A108 Adam Street, New York, NY 535022</p>
+                        </div>
+                     </div><!-- End Info Item -->
+
+                     <div class="info-item d-flex">
+                        <i class="bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                           <h4>Email:</h4>
+                           <p>info@example.com</p>
+                        </div>
+                     </div><!-- End Info Item -->
+
+                     <div class="info-item d-flex">
+                        <i class="bi bi-phone flex-shrink-0"></i>
+                        <div>
+                           <h4>Call:</h4>
+                           <p>+1 5589 55488 55</p>
+                        </div>
+                     </div><!-- End Info Item -->
+
+                  </div>
+
+               </div>
+
+               <div class="col-lg-8">
+                  <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                     <div class="row">
+                        <div class="col-md-6 form-group">
+                           <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                           <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                        </div>
+                     </div>
+                     <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                     </div>
+                     <div class="form-group mt-3">
+                        <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+                     </div>
+                     <div class="my-3">
+                        <div class="loading">Loading</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                     </div>
+                     <div class="text-center"><button type="submit">Send Message</button></div>
+                  </form>
+               </div><!-- End Contact Form -->
+
+            </div>
+
+         </div>
       </section><!-- End Contact Section -->
 
    </main><!-- End #main -->
@@ -314,51 +887,50 @@ $app_identity = app_identity();
    <!-- ======= Footer ======= -->
    <footer id="footer" class="footer">
 
-      <div class="footer-top">
+      <div class="footer-content">
          <div class="container">
-            <div class="row gy-4">
-               <div class="col-lg-5 col-md-12 footer-info">
-                  <a href="index.html" class="logo d-flex align-items-center">
-                     <img src="<?= $app_identity['app_brand']; ?>" alt="">
-                     <span><?= $app_identity['app_title']; ?></span>
-                  </a>
-                  <p><?= $app_identity['app_about']; ?></p>
-                  <div class="social-links mt-3">
-                     <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                     <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                     <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                     <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <div class="row">
+
+               <div class="col-lg-3 col-md-6">
+                  <div class="footer-info">
+                     <h3>HeroBiz</h3>
+                     <p>
+                        A108 Adam Street <br>
+                        NY 535022, USA<br><br>
+                        <strong>Phone:</strong> +1 5589 55488 55<br>
+                        <strong>Email:</strong> info@example.com<br>
+                     </p>
                   </div>
                </div>
 
-               <div class="col-lg-2 col-6 footer-links">
-                  <h4>Links</h4>
+               <div class="col-lg-2 col-md-6 footer-links">
+                  <h4>Useful Links</h4>
                   <ul>
                      <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#about">Tentang Kami</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#services">Pelayanan</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#team">Tim Kerja</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#contact">Contact</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
                   </ul>
                </div>
 
-               <div class="col-lg-2 col-6 footer-links">
-                  <h4>Pelayanan Kami</h4>
+               <div class="col-lg-3 col-md-6 footer-links">
+                  <h4>Our Services</h4>
                   <ul>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#pelayanan_rj">Pelayanan Rawat Jalan</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#pelayanan_ri">Pelayanan Rawat Inap</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#pelayanan_ugd">Pelayanan UGD</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
                   </ul>
                </div>
 
-               <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                  <h4>Hubungi Kami</h4>
-                  <p>
-                     <?= $app_identity['app_address']; ?>
-                     <br><br>
-                     <strong>Phone:</strong> <?= $app_identity['app_phone']; ?><br>
-                     <strong>Email:</strong> <?= $app_identity['app_email']; ?><br>
-                  </p>
+               <div class="col-lg-4 col-md-6 footer-newsletter">
+                  <h4>Our Newsletter</h4>
+                  <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                  <form action="" method="post">
+                     <input type="email" name="email"><input type="submit" value="Subscribe">
+                  </form>
 
                </div>
 
@@ -366,26 +938,46 @@ $app_identity = app_identity();
          </div>
       </div>
 
-      <div class="container">
-         <div class="copyright">
-            &copy; Copyright <?= date('Y'); ?> <strong><span><?= $app_identity['app_title']; ?></span></strong>. All Rights Reserved
-         </div>
-         <div class="credits">
-            Designed by <a href="https://instagram.com/asnanmtakim">Asnanmtakim</a>
+      <div class="footer-legal text-center">
+         <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+            <div class="d-flex flex-column align-items-center align-items-lg-start">
+               <div class="copyright">
+                  &copy; Copyright <strong><span>HeroBiz</span></strong>. All Rights Reserved
+               </div>
+               <div class="credits">
+                  <!-- All the links in the footer should remain intact. -->
+                  <!-- You can delete the links only if you purchased the pro version. -->
+                  <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
+                  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+               </div>
+            </div>
+
+            <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+               <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+               <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
+               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
          </div>
       </div>
+
    </footer><!-- End Footer -->
 
-   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+   <div id="preloader"></div>
 
    <!-- Vendor JS Files -->
-   <script src="<?= base_url(); ?>/assets/welcome/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+   <script src="<?= base_url(); ?>/assets/welcome/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
    <script src="<?= base_url(); ?>/assets/welcome/vendor/aos/aos.js"></script>
-   <script src="<?= base_url(); ?>/assets/welcome/vendor/php-email-form/validate.js"></script>
-   <script src="<?= base_url(); ?>/assets/welcome/vendor/swiper/swiper-bundle.min.js"></script>
-   <script src="<?= base_url(); ?>/assets/welcome/vendor/purecounter/purecounter.js"></script>
-   <script src="<?= base_url(); ?>/assets/welcome/vendor/isotope-layout/isotope.pkgd.min.js"></script>
    <script src="<?= base_url(); ?>/assets/welcome/vendor/glightbox/js/glightbox.min.js"></script>
+   <script src="<?= base_url(); ?>/assets/welcome/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+   <script src="<?= base_url(); ?>/assets/welcome/vendor/swiper/swiper-bundle.min.js"></script>
+   <script src="<?= base_url(); ?>/assets/welcome/vendor/php-email-form/validate.js"></script>
 
    <!-- Template Main JS File -->
    <script src="<?= base_url(); ?>/assets/welcome/js/main.js"></script>
