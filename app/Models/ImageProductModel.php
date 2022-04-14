@@ -11,6 +11,11 @@ class ImageProductModel extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $allowedFields = [
-        'id_product', 'image', 'created_at', 'updated_at', 'deleted_at'
+        'id_product', 'image_file', 'image_sort', 'created_at', 'updated_at', 'deleted_at'
     ];
+
+    public function getImageProduct($id_product)
+    {
+        return $this->where('id_product', $id_product)->findAll();
+    }
 }

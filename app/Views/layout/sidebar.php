@@ -15,7 +15,7 @@
                 <img src="<?= base_url() ?>/uploads/image_user/<?= user()->image_user != '' ? user()->image_user : 'default.jpg' ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="<?= base_url() ?>/profile" class="d-block"><?= user()->fullname != '' ? user()->fullname : user()->username; ?></a>
+                <a href="<?= base_url() ?>/admin/profile" class="d-block"><?= user()->fullname != '' ? user()->fullname : user()->username; ?></a>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                 <li class="nav-header">Panel User</li>
                 <li class="nav-item">
-                    <a href="/" class="nav-link <?= $page == 'dashboard' ? 'active' : '' ?>">
+                    <a href="/admin" class="nav-link <?= $page == 'dashboard' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/profile" class="nav-link <?= $page == 'profile' ? 'active' : '' ?>">
+                    <a href="/admin/profile" class="nav-link <?= $page == 'profile' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-user-circle"></i>
                         <p>
                             Profil Pengguna

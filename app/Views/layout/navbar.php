@@ -6,10 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?= base_url() ?>/welcome" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?= base_url() ?>/welcome#contact" class="nav-link">Contact</a>
+            <a href="<?= base_url() ?>" class="nav-link">Home</a>
         </li>
     </ul>
 
@@ -39,7 +36,7 @@
                 </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                    <a href="<?= base_url(); ?>/profile" class="btn btn-secondary btn-flat">Profile</a>
+                    <a href="<?= base_url(); ?>/admin/profile" class="btn btn-secondary btn-flat">Profile</a>
                     <a href="<?= base_url(); ?>/logout" class="btn btn-warning btn-flat float-right">Logout</a>
                 </li>
             </ul>

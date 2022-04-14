@@ -82,11 +82,11 @@ $app_identity = app_identity();
             <div class="container">
                <div class="row justify-content-center gy-6">
 
-                  <div class="col-lg-5 col-md-8">
+                  <div class="col-lg-10 col-md-12">
                      <img src="<?= base_url(); ?>/uploads/home/<?= $hm['image_home']; ?>" alt="" class="img-fluid img">
                   </div>
 
-                  <div class="col-lg-9 text-center">
+                  <div class="col-lg-11 text-center">
                      <h2><?= $hm['title_home']; ?></h2>
                      <p><?= $hm['description_home']; ?></p>
                   </div>
@@ -171,24 +171,6 @@ $app_identity = app_identity();
 
                         <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
 
-                        <div class="d-flex align-items-center mt-4">
-                           <i class="bi bi-check2"></i>
-                           <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-                        </div>
-                        <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                        <div class="d-flex align-items-center mt-4">
-                           <i class="bi bi-check2"></i>
-                           <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                        </div>
-                        <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                        <div class="d-flex align-items-center mt-4">
-                           <i class="bi bi-check2"></i>
-                           <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-                        </div>
-                        <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
                      </div><!-- End Tab 3 Content -->
 
                   </div>
@@ -206,14 +188,9 @@ $app_identity = app_identity();
 
             <div class="clients-slider swiper">
                <div class="swiper-wrapper align-items-center">
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-1.png" class="img-fluid" alt=""></div>
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-2.png" class="img-fluid" alt=""></div>
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-3.png" class="img-fluid" alt=""></div>
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-4.png" class="img-fluid" alt=""></div>
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-5.png" class="img-fluid" alt=""></div>
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-6.png" class="img-fluid" alt=""></div>
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-7.png" class="img-fluid" alt=""></div>
-                  <div class="swiper-slide"><img src="<?= base_url(); ?>/assets/welcome/img/clients/client-8.png" class="img-fluid" alt=""></div>
+                  <?php foreach ($partner as $pn) : ?>
+                     <div class="swiper-slide"><img src="<?= base_url(); ?>/uploads/partner/<?= $pn['image_partner']; ?>" class="img-fluid" alt="<?= $pn['title_partner']; ?>"></div>
+                  <?php endforeach; ?>
                </div>
             </div>
 
@@ -437,136 +414,32 @@ $app_identity = app_identity();
       <section id="portfolio" class="portfolio" data-aos="fade-up">
 
          <div class="container">
-
             <div class="section-header">
-               <h2>Portfolio</h2>
-               <p>Non hic nulla eum consequatur maxime ut vero memo vero totam officiis pariatur eos dolorum sed fug dolorem est possimus esse quae repudiandae. Dolorem id enim officiis sunt deserunt esse soluta consequatur quaerat</p>
+               <h2>Produk Kami</h2>
+               <p>Produk-produk yang kami hasilkan</p>
             </div>
-
          </div>
 
          <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
-
             <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
-
                <ul class="portfolio-flters">
                   <li data-filter="*" class="filter-active">All</li>
-                  <li data-filter=".filter-app">App</li>
+                  <!-- <li data-filter=".filter-app">App</li>
                   <li data-filter=".filter-product">Product</li>
                   <li data-filter=".filter-branding">Branding</li>
-                  <li data-filter=".filter-books">Books</li>
+                  <li data-filter=".filter-books">Books</li> -->
                </ul><!-- End Portfolio Filters -->
-
                <div class="row g-0 portfolio-container">
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/app-1.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>App 1</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/product-1.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Product 1</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-1.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Branding 1</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/books-1.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Books 1</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/app-2.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>App 2</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/product-2.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Product 2</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-2.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Branding 2</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/books-2.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Books 2</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/app-3.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>App 3</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/product-3.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Product 3</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-branding">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-3.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Branding 3</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-books">
-                     <img src="<?= base_url(); ?>/assets/welcome/img/portfolio/books-3.jpg" class="img-fluid" alt="">
-                     <div class="portfolio-info">
-                        <h4>Books 3</h4>
-                        <a href="<?= base_url(); ?>/assets/welcome/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                     </div>
-                  </div><!-- End Portfolio Item -->
-
+                  <?php foreach ($product as $pd) : ?>
+                     <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-product">
+                        <img src="<?= base_url(); ?>/uploads/product/<?= $pd['id_product']; ?>/<?= $pd['image_product'][0]['image_file']; ?>" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                           <h4><?= $pd['name_product']; ?></h4>
+                           <a href="<?= base_url(); ?>/uploads/product/<?= $pd['id_product']; ?>/<?= $pd['image_product'][0]['image_file']; ?>" title="<?= $pd['name_product']; ?>" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                           <a href="portfolio-details.html" title="Detail" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                        </div>
+                     </div><!-- End Portfolio Item -->
+                  <?php endforeach; ?>
                </div><!-- End Portfolio Container -->
 
             </div>
@@ -579,66 +452,29 @@ $app_identity = app_identity();
          <div class="container" data-aos="fade-up">
 
             <div class="section-header">
-               <h2>Our Team</h2>
-               <p>Architecto nobis eos vel nam quidem vitae temporibus voluptates qui hic deserunt iusto omnis nam voluptas asperiores sequi tenetur dolores incidunt enim voluptatem magnam cumque fuga.</p>
+               <h2>Tim kami</h2>
+               <p>Tim solid kami.</p>
             </div>
 
             <div class="row gy-5">
-
-               <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
-                  <div class="team-member">
-                     <div class="member-img">
-                        <img src="<?= base_url(); ?>/assets/welcome/img/team/team-1.jpg" class="img-fluid" alt="">
-                     </div>
-                     <div class="member-info">
-                        <div class="social">
-                           <a href=""><i class="bi bi-twitter"></i></a>
-                           <a href=""><i class="bi bi-facebook"></i></a>
-                           <a href=""><i class="bi bi-instagram"></i></a>
-                           <a href=""><i class="bi bi-linkedin"></i></a>
+               <?php foreach ($team as $tm) : ?>
+                  <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="200">
+                     <div class="team-member">
+                        <div class="member-img">
+                           <img src="<?= base_url(); ?>/uploads/team/<?= $tm['image_team']; ?>" class="img-fluid" alt="">
                         </div>
-                        <h4>Walter White</h4>
-                        <span>Chief Executive Officer</span>
-                     </div>
-                  </div>
-               </div><!-- End Team Member -->
-
-               <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="400">
-                  <div class="team-member">
-                     <div class="member-img">
-                        <img src="<?= base_url(); ?>/assets/welcome/img/team/team-2.jpg" class="img-fluid" alt="">
-                     </div>
-                     <div class="member-info">
-                        <div class="social">
-                           <a href=""><i class="bi bi-twitter"></i></a>
-                           <a href=""><i class="bi bi-facebook"></i></a>
-                           <a href=""><i class="bi bi-instagram"></i></a>
-                           <a href=""><i class="bi bi-linkedin"></i></a>
+                        <div class="member-info">
+                           <div class="social">
+                              <a href="https://wa.me/<?= $tm['wa_team']; ?>" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                              <a href="https://facebook.com/<?= $tm['fb_team']; ?>"><i class="bi bi-facebook" target="_blank"></i></a>
+                              <a href="https://instagram.com/<?= $tm['ig_team']; ?>"><i class="bi bi-instagram" target="_blank"></i></a>
+                           </div>
+                           <h4><?= $tm['name_team']; ?></h4>
+                           <span><?= $tm['position_team']; ?></span>
                         </div>
-                        <h4>Sarah Jhonson</h4>
-                        <span>Product Manager</span>
                      </div>
-                  </div>
-               </div><!-- End Team Member -->
-
-               <div class="col-xl-4 col-md-6 d-flex" data-aos="zoom-in" data-aos-delay="600">
-                  <div class="team-member">
-                     <div class="member-img">
-                        <img src="<?= base_url(); ?>/assets/welcome/img/team/team-3.jpg" class="img-fluid" alt="">
-                     </div>
-                     <div class="member-info">
-                        <div class="social">
-                           <a href=""><i class="bi bi-twitter"></i></a>
-                           <a href=""><i class="bi bi-facebook"></i></a>
-                           <a href=""><i class="bi bi-instagram"></i></a>
-                           <a href=""><i class="bi bi-linkedin"></i></a>
-                        </div>
-                        <h4>William Anderson</h4>
-                        <span>CTO</span>
-                     </div>
-                  </div>
-               </div><!-- End Team Member -->
-
+                  </div><!-- End Team Member -->
+               <?php endforeach; ?>
             </div>
 
          </div>
@@ -712,83 +548,26 @@ $app_identity = app_identity();
                   <div class="content px-xl-5">
                      <h3>Frequently Asked <strong>Questions</strong></h3>
                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                        Pertanyaan-pertanyaan
                      </p>
                   </div>
 
                   <div class="accordion accordion-flush px-xl-5" id="faqlist">
-
-                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-                        <h3 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                              <i class="bi bi-question-circle question-icon"></i>
-                              Non consectetur a erat nam at lectus urna duis?
-                           </button>
-                        </h3>
-                        <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                           <div class="accordion-body">
-                              Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                     <?php foreach ($faq as $key => $value) : ?>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                           <h3 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-<?= $key; ?>">
+                                 <i class="bi bi-question-circle question-icon"></i>
+                                 <?= $value['question_faq']; ?>
+                              </button>
+                           </h3>
+                           <div id="faq-content-<?= $key; ?>" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                              <div class="accordion-body">
+                                 <?= $value['answer_faq']; ?>
+                              </div>
                            </div>
-                        </div>
-                     </div><!-- # Faq item-->
-
-                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
-                        <h3 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
-                              <i class="bi bi-question-circle question-icon"></i>
-                              Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
-                           </button>
-                        </h3>
-                        <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                           <div class="accordion-body">
-                              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                           </div>
-                        </div>
-                     </div><!-- # Faq item-->
-
-                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
-                        <h3 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-                              <i class="bi bi-question-circle question-icon"></i>
-                              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
-                           </button>
-                        </h3>
-                        <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                           <div class="accordion-body">
-                              Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                           </div>
-                        </div>
-                     </div><!-- # Faq item-->
-
-                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
-                        <h3 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
-                              <i class="bi bi-question-circle question-icon"></i>
-                              Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-                           </button>
-                        </h3>
-                        <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                           <div class="accordion-body">
-                              <i class="bi bi-question-circle question-icon"></i>
-                              Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                           </div>
-                        </div>
-                     </div><!-- # Faq item-->
-
-                     <div class="accordion-item" data-aos="fade-up" data-aos-delay="600">
-                        <h3 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
-                              <i class="bi bi-question-circle question-icon"></i>
-                              Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
-                           </button>
-                        </h3>
-                        <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                           <div class="accordion-body">
-                              Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                           </div>
-                        </div>
-                     </div><!-- # Faq item-->
-
+                        </div><!-- # Faq item-->
+                     <?php endforeach; ?>
                   </div>
 
                </div>
@@ -804,14 +583,14 @@ $app_identity = app_identity();
          <div class="container">
 
             <div class="section-header">
-               <h2>Contact Us</h2>
-               <p>Ea vitae aspernatur deserunt voluptatem impedit deserunt magnam occaecati dssumenda quas ut ad dolores adipisci aliquam.</p>
+               <h2>Hubungi Kami</h2>
+               <p>Kata-kata ra masalah</p>
             </div>
 
          </div>
 
          <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+            <iframe src="<?= $app_identity['app_maps']; ?>" frameborder="0" allowfullscreen></iframe>
          </div><!-- End Google Maps -->
 
          <div class="container">
@@ -821,14 +600,14 @@ $app_identity = app_identity();
                <div class="col-lg-4">
 
                   <div class="info">
-                     <h3>Get in touch</h3>
-                     <p>Et id eius voluptates atque nihil voluptatem enim in tempore minima sit ad mollitia commodi minus.</p>
+                     <h3>Kontak kami</h3>
+                     <p>Kontak kami</p>
 
                      <div class="info-item d-flex">
                         <i class="bi bi-geo-alt flex-shrink-0"></i>
                         <div>
-                           <h4>Location:</h4>
-                           <p>A108 Adam Street, New York, NY 535022</p>
+                           <h4>Alamat:</h4>
+                           <p><?= $app_identity['app_address']; ?></p>
                         </div>
                      </div><!-- End Info Item -->
 
@@ -836,15 +615,19 @@ $app_identity = app_identity();
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
                            <h4>Email:</h4>
-                           <p>info@example.com</p>
+                           <a href="mailto:<?= $app_identity['app_email']; ?>">
+                              <p><?= $app_identity['app_email']; ?></p>
+                           </a>
                         </div>
                      </div><!-- End Info Item -->
 
                      <div class="info-item d-flex">
                         <i class="bi bi-phone flex-shrink-0"></i>
                         <div>
-                           <h4>Call:</h4>
-                           <p>+1 5589 55488 55</p>
+                           <h4>Telp:</h4>
+                           <a href="http://wa.me/<?= $app_identity['app_phone']; ?>" target="_blank" rel="noopener noreferrer">
+                              <p><?= $app_identity['app_phone']; ?></p>
+                           </a>
                         </div>
                      </div><!-- End Info Item -->
 
@@ -856,24 +639,24 @@ $app_identity = app_identity();
                   <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                      <div class="row">
                         <div class="col-md-6 form-group">
-                           <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                           <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
                         </div>
                         <div class="col-md-6 form-group mt-3 mt-md-0">
-                           <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                           <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                         </div>
                      </div>
                      <div class="form-group mt-3">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Judul" required>
                      </div>
                      <div class="form-group mt-3">
-                        <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+                        <textarea class="form-control" name="message" placeholder="Pesan" required></textarea>
                      </div>
                      <div class="my-3">
                         <div class="loading">Loading</div>
                         <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
+                        <div class="sent-message">Pesan Berhasil Terkirim. Terima Kasih!</div>
                      </div>
-                     <div class="text-center"><button type="submit">Send Message</button></div>
+                     <div class="text-center"><button type="submit">Kirim Pesan</button></div>
                   </form>
                </div><!-- End Contact Form -->
 
@@ -891,31 +674,31 @@ $app_identity = app_identity();
          <div class="container">
             <div class="row">
 
-               <div class="col-lg-3 col-md-6">
+               <div class="col-lg-5 col-md-6">
                   <div class="footer-info">
-                     <h3>HeroBiz</h3>
+                     <h3><?= $app_identity['app_title']; ?></h3>
                      <p>
-                        A108 Adam Street <br>
-                        NY 535022, USA<br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        <?= $app_identity['app_address']; ?><br><br>
+                        <strong>Telp:</strong> <a href="http://wa.me/<?= $app_identity['app_phone']; ?>" target="_blank" rel="noopener noreferrer"><?= $app_identity['app_phone']; ?></a><br>
+                        <strong>Email:</strong> <a href="mailto:<?= $app_identity['app_email']; ?>"><?= $app_identity['app_email']; ?></a><br>
                      </p>
                   </div>
                </div>
 
-               <div class="col-lg-2 col-md-6 footer-links">
+               <div class="col-lg-3 col-md-6 footer-links">
                   <h4>Useful Links</h4>
                   <ul>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                     <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Beranda</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Tentang</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Produk</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Tim</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Blog</a></li>
+                     <li><i class="bi bi-chevron-right"></i> <a href="#">Faq</a></li>
                   </ul>
                </div>
 
-               <div class="col-lg-3 col-md-6 footer-links">
-                  <h4>Our Services</h4>
+               <div class="col-lg-4 col-md-6 footer-links">
+                  <h4>Produk Kami</h4>
                   <ul>
                      <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
                      <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
@@ -923,15 +706,6 @@ $app_identity = app_identity();
                      <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
                      <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
                   </ul>
-               </div>
-
-               <div class="col-lg-4 col-md-6 footer-newsletter">
-                  <h4>Our Newsletter</h4>
-                  <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                  <form action="" method="post">
-                     <input type="email" name="email"><input type="submit" value="Subscribe">
-                  </form>
-
                </div>
 
             </div>
@@ -943,23 +717,21 @@ $app_identity = app_identity();
 
             <div class="d-flex flex-column align-items-center align-items-lg-start">
                <div class="copyright">
-                  &copy; Copyright <strong><span>HeroBiz</span></strong>. All Rights Reserved
+                  &copy; 2022 Copyright <strong><span><?= $app_identity['app_name']; ?></span></strong>. All Rights Reserved
                </div>
                <div class="credits">
                   <!-- All the links in the footer should remain intact. -->
                   <!-- You can delete the links only if you purchased the pro version. -->
                   <!-- Licensing information: https://bootstrapmade.com/license/ -->
                   <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-                  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                  Designed by <a href="https://instagram.com/asnanmtakim">Asnanmtakim</a>
                </div>
             </div>
 
             <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-               <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-               <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+               <?php foreach ($sosmed as $sm) : ?>
+                  <a href="<?= $sm['link_sosmed']; ?>" class="<?= $sm['icon_sosmed']; ?>"><i class="bi bi-<?= $sm['icon_sosmed']; ?>"></i></a>
+               <?php endforeach; ?>
             </div>
 
          </div>

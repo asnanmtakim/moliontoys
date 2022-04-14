@@ -47,8 +47,8 @@ $app_identity = app_identity();
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="description-block">
-                                        <h5 class="description-header">Jl. Tikusan No. 37, Tikusan, Kec. Kapas, Kab. Bojonegoro</h5>
-                                        <span>Email: klinikckm@gmail.com</span>
+                                        <h5 class="description-header"><?= $app_identity['app_address']; ?></h5>
+                                        <span>Email: <?= $app_identity['app_email']; ?></span>
                                     </div>
                                     <!-- /.description-block -->
                                 </div>

@@ -11,6 +11,6 @@ class SosmedModel extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $allowedFields = [
-        'icon_sosmed', 'link_sosmed', 'created_at', 'updated_at', 'deleted_at'
+        'icon_sosmed', 'link_sosmed', 'active_sosmed', 'created_at', 'updated_at', 'deleted_at'
     ];
 }
