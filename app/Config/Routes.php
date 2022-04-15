@@ -36,7 +36,13 @@ $routes->set404Override(function ($message = null) {
     if ($_SERVER['CI_ENVIRONMENT'] == 'production') {
         $message = 'Kemungkinan halaman telah dihapus, atau Anda salah menulis URL.';
     }
-    return view('errors/error404', ['title' => 'Error 404', 'page' => 'error404', 'message' => $message]);
+    if (logged_in()) {
+        return view('errors/admin/error404', ['title' => 'Error 404', 'page' => 'error404', 'message' => $message]);
+    } else {
+        $sosmed = new \App\Models\SosmedModel();
+        $sosmed = $sosmed->findAll();
+        return view('errors/welcome/error404', ['title' => 'Error 404', 'page' => 'error404', 'sosmed' => $sosmed, 'message' => $message]);
+    }
 });
 
 // Call All Routes

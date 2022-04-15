@@ -4,6 +4,11 @@ function format_rupiah($angka)
    $rupiah = number_format($angka, 0, ',', '.');
    return $rupiah;
 }
+function fromat_substr($string, $length)
+{
+   $string = substr($string, 0, $length);
+   return $string;
+}
 function format_tanggal($tanggal)
 {
    $tanggal = date('Y-m-d', strtotime($tanggal));

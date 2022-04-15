@@ -24,4 +24,14 @@ class ProductModel extends Model
         }
         return $produk;
     }
+
+    public function getOneProductbySlug($slug)
+    {
+        $ImageProductModel = new ImageProductModel();
+        $produk = $this->where('slug_product', $slug)->first();
+        if ($produk) {
+            $produk['image_product'] = $ImageProductModel->getImageProduct($produk['id_product']);
+        }
+        return $produk;
+    }
 }
