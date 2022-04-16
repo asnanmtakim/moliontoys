@@ -12,6 +12,7 @@ use App\Models\PartnerModel;
 use App\Models\BlogModel;
 use App\Models\FaqModel;
 use App\Models\CategoryModel;
+use App\Models\CertificateModel;
 
 class Welcome extends BaseController
 {
@@ -25,6 +26,7 @@ class Welcome extends BaseController
     protected $BlogModel;
     protected $FaqModel;
     protected $CategoryModel;
+    protected $CertificateModel;
     public function __construct()
     {
         $this->HomeModel = new HomeModel();
@@ -37,6 +39,7 @@ class Welcome extends BaseController
         $this->BlogModel = new BlogModel();
         $this->FaqModel = new FaqModel();
         $this->CategoryModel = new CategoryModel();
+        $this->CertificateModel = new CertificateModel();
     }
 
     public function index()
@@ -55,6 +58,7 @@ class Welcome extends BaseController
             'team' => $this->TeamModel->findAll(),
             'partner' => $this->PartnerModel->findAll(),
             'faq' => $this->FaqModel->findAll(),
+            'certificate' => $this->CertificateModel->findAll(),
             'product' => $product,
             'blog' => $blog,
             'page' => 'home',

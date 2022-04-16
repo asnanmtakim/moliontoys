@@ -110,7 +110,7 @@ $app_identity = app_identity();
                     <div class="col-lg-4 col-md-6 footer-links">
                         <h4>Produk Kami</h4>
                         <ul>
-                            <li><i class="bi bi-chevron-right"></i> <a href="#">Pabrik Mainan Anak</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Mainan Anak</a></li>
                         </ul>
                     </div>
 

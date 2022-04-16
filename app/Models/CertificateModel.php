@@ -11,6 +11,6 @@ class CertificateModel extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $allowedFields = [
-        'icon_certificate', 'title_certificate', 'description_certificate', 'image_certificate', 'created_at', 'updated_at', 'deleted_at'
+        'icon_certificate', 'title_certificate', 'description_certificate', 'file_certificate', 'created_at', 'updated_at', 'deleted_at'
     ];
 }
