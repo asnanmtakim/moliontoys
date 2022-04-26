@@ -120,6 +120,7 @@ class Admin extends BaseController
 
     public function profileEditImage()
     {
+        // dd($this->request->getFile('image_user'));
         if (!$this->validate([
             'image_user' => [
                 'label' => 'Foto profil',
@@ -205,6 +206,171 @@ class Admin extends BaseController
             session()->setFlashdata('message_success', 'Password Berhasil Diubah');
             return redirect()->to('/admin/profile')->with('tag', 'upassword');
         }
+    }
+
+    public function indexHome()
+    {
+        $home = new \App\Models\HomeModel();
+        $home = $home->findAll();
+        $data = [
+            'title' => 'Home',
+            'page' => 'home',
+            'home' => $home,
+        ];
+        // dd($data);
+        return view('home/index', $data);
+    }
+
+    public function addHome()
+    {
+        $db = db_connect();
+        $data = [
+            'title' => 'Tambah Beranda',
+            'page' => 'home',
+            'validation' => \Config\Services::validation()
+        ];
+        return view('home/add', $data);
+    }
+
+    public function saveHome()
+    {
+        $validation = \Config\Services::validation();
+        $pesan = [];
+        if ($this->validate($this->rulesValidationHome())) {
+            if ($this->request->getPost('image_home') == "undefined") {
+                $pesan['image_home'] = "Gambar beranda harus diisi";
+                $pesan['title_home'] = '';
+                $pesan['description_home'] = '';
+                echo json_encode(array('status' => 400, 'pesan' => $pesan));
+                return;
+            }
+            $imageHome = $this->request->getPost('image_home');
+            $imageHome = str_replace('data:image/png;base64,', '', $imageHome);
+            $imageHome = str_replace(' ', '+', $imageHome);
+            $dataImage = base64_decode($imageHome);
+            $imageName = 'home_' . time() . '.png';
+            $pathName = 'uploads/home/' . $imageName;
+            file_put_contents($pathName, $dataImage);
+            $data = [
+                'title_home' => $this->request->getPost('title_home'),
+                'description_home' => $this->request->getPost('description_home'),
+                'image_home' => $imageName,
+                'active_home' => 0,
+            ];
+            // dd($data);
+            $homeModel = new \App\Models\HomeModel();
+            $query = $homeModel->save($data);
+            if ($query) {
+                session()->setFlashdata('message_success', 'Data Beranda Berhasil Disimpan');
+                echo json_encode(array('status' => 200, 'pesan' => 'Berhasil disimpan !!'));
+            } else {
+                echo json_encode(array('status' => 0, 'pesan' => 'Gagal disimpan !!'));
+            }
+        } else {
+            if ($this->request->getPost('image_home') == "undefined") {
+                $pesan['image_home'] = "Gambar beranda harus diisi";
+            }
+            $pesan['title_home'] = $validation->getError('title_home');
+            $pesan['description_home'] = $validation->getError('description_home');
+            echo json_encode(array('status' => 400, 'pesan' => $pesan));
+        }
+    }
+
+    public function deleteHome()
+    {
+        $id_home = $this->request->getPost('id');
+        $homeModel = new \App\Models\HomeModel();
+        $home = $homeModel->find($id_home);
+        if (empty($home)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Beranda tidak ditemukan.');
+        }
+        $query = $homeModel->delete($id_home);
+        if ($query) {
+            session()->setFlashdata('message_success', 'Data Beranda Berhasil Dihapus');
+            echo json_encode(array('status' => 200, 'pesan' => 'Berhasil dihapus !!'));
+        } else {
+            echo json_encode(array('status' => 0, 'pesan' => 'Gagal dihapus !!'));
+        }
+    }
+
+    public function editHome($id_home)
+    {
+        $homeModel = new \App\Models\HomeModel();
+        $home = $homeModel->find($id_home);
+        if (empty($home)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Beranda tidak ditemukan.');
+        }
+        $data = [
+            'title' => 'Edit Beranda',
+            'page' => 'home',
+            'home' => $home,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('home/edit', $data);
+    }
+
+    public function updateHome()
+    {
+        $validation = \Config\Services::validation();
+        $pesan = [];
+        if ($this->validate($this->rulesValidationHome())) {
+            $data = [
+                'id_home' => $this->request->getPost('id_home'),
+                'title_home' => $this->request->getPost('title_home'),
+                'description_home' => $this->request->getPost('description_home'),
+                'active_home' => 0,
+            ];
+            if ($this->request->getPost('image_home') != "undefined") {
+                $imageHome = $this->request->getPost('image_home');
+                $imageHome = str_replace('data:image/png;base64,', '', $imageHome);
+                $imageHome = str_replace(' ', '+', $imageHome);
+                $dataImage = base64_decode($imageHome);
+                $imageName = 'home_' . time() . '.png';
+                $pathName = 'uploads/home/' . $imageName;
+                file_put_contents($pathName, $dataImage);
+                if (file_exists('uploads/home/' . $this->request->getPost('image_home_old'))) {
+                    unlink('uploads/home/' . $this->request->getPost('image_home_old'));
+                }
+                $data['image_home'] = $imageName;
+            }
+
+            $homeModel = new \App\Models\HomeModel();
+            $query = $homeModel->save($data);
+            if ($query) {
+                session()->setFlashdata('message_success', 'Data Beranda Berhasil Diubah');
+                echo json_encode(array('status' => 200, 'pesan' => 'Berhasil diubah !!'));
+            } else {
+                echo json_encode(array('status' => 0, 'pesan' => 'Gagal diubah !!'));
+            }
+        } else {
+            $pesan['title_home'] = $validation->getError('title_home');
+            $pesan['description_home'] = $validation->getError('description_home');
+            echo json_encode(array('status' => 400, 'pesan' => $pesan));
+        }
+    }
+
+    private function rulesValidationHome()
+    {
+        $config = [
+            'title_home' => [
+                'label' => 'Judul beranda',
+                'rules' => 'required|max_length[200]',
+                'errors' => [
+                    'required' => '{field} harus diisi.',
+                    'max_length' => '{field} maksimal berisi {param} karakter.',
+                ],
+            ],
+            'description_home' => [
+                'label' => 'Deskripsi beranda',
+                'rules' => 'required|max_length[200]',
+                'errors' => [
+                    'required' => '{field} harus diisi.',
+                    'max_length' => '{field} maksimal berisi {param} karakter.',
+                ],
+            ]
+        ];
+
+        return $config;
     }
 
     public function setSess()

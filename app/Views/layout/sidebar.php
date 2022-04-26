@@ -53,7 +53,16 @@
                     </a>
                 </li>
                 <?php if (in_groups('admin')) : ?>
-                    <li class="nav-header">Panel Admin</li>
+                    <li class="nav-header">Panel Aplikasi</li>
+                    <li class="nav-item">
+                        <a href="<?= base_url(); ?>/admin/apps" class="nav-link <?= $page == 'app' ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-tablet-alt"></i>
+                            <p>
+                                Setting Aplikasi
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Panel Halaman</li>
                     <li class="nav-item">
                         <a href="<?= base_url(); ?>/admin/home" class="nav-link <?= $page == 'home' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-home"></i>
@@ -63,7 +72,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url(); ?>/admin/about" class="nav-link <?= $page == 'home' ? 'active' : '' ?>">
+                        <a href="<?= base_url(); ?>/admin/about" class="nav-link <?= $page == 'about' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-audio-description"></i>
                             <p>
                                 Halaman Tentang

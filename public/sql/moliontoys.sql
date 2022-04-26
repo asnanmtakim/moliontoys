@@ -11,7 +11,7 @@
  Target Server Version : 100703
  File Encoding         : 65001
 
- Date: 15/04/2022 16:05:53
+ Date: 16/04/2022 11:36:37
 */
 
 SET NAMES utf8;
@@ -36,7 +36,7 @@ CREATE TABLE `about` (
 -- Records of about
 -- ----------------------------
 BEGIN;
-INSERT INTO `about` VALUES (1, 'Tentang', 'PT Molion Toys Indonesia adalah pabrik produksi mainan blow moulding profesional. Ini memiliki lebih dari 10 mesin blow moulding 90-120 liter. Selain mainan, pabrik kami juga dapat memproduksi kotak alat, tangki air, ember, furnitur blow moulding, dan mesin blow moulding lainnya tentang produk.<br><br>Sebagai perusahaan produksi dan pemrosesan profesional, pabrik kami memiliki sistem manajemen mutu yang lengkap dan ilmiah. Telah lulus sertifikasi mutu ISO9001:2015. Integritas, kekuatan dan kualitas produk pt.molion toys indonesia telah diakui oleh industri. Selamat datang teman-teman dari semua lapisan masyarakat untuk mengunjungi, membimbing dan bernegosiasi bisnis.', 'molion-icon.png', '2022-04-12 11:20:44', '2022-04-12 11:20:46', NULL);
+INSERT INTO `about` VALUES (1, 'Tentang', 'PT Molion Toys Indonesia adalah pabrik produksi mainan blow moulding profesional. Ini memiliki lebih dari 10 mesin blow moulding 90-120 liter. Selain mainan, pabrik kami juga dapat memproduksi kotak alat, tangki air, ember, furnitur blow moulding, dan mesin blow moulding lainnya tentang produk.<br><br>Sebagai perusahaan produksi dan pemrosesan profesional, pabrik kami memiliki sistem manajemen mutu yang lengkap dan ilmiah. Telah lulus sertifikasi mutu ISO9001:2015. Integritas, kekuatan dan kualitas produk pt.molion toys indonesia telah diakui oleh industri. Selamat datang teman-teman dari semua lapisan masyarakat untuk mengunjungi, membimbing dan bernegosiasi bisnis.', 'about.jpg', '2022-04-12 11:20:44', '2022-04-12 11:20:46', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -59,10 +59,10 @@ CREATE TABLE `app_identity` (
 BEGIN;
 INSERT INTO `app_identity` VALUES ('app_about', 'Tentang Aplikasi', 'textarea', 'Molion Toys Indonesia', NULL, 1);
 INSERT INTO `app_identity` VALUES ('app_about_us', 'Tentang Kami', 'textarea', '<h2>VISI</h2>\n                     <p>\n                        Menjadi Fasilitas Kesehatan Primer yang berkualitas dan bermanfaat bagi masyarakat dalam bidang kesehatan sesuai dengan kompetensinya\n                     </p>\n                     <h2>MISI</h2>\n                     <ol>\n                        <li>\n                           Melaksanakan kegiatan preventif, promotif, kuratif, dan rehabilitatif (memberikan pelayanan secara holistik)\n                        </li>\n                        <li>\n                           Melayani dengan santun dan ramah\n                        </li>\n                        <li>\n                           Menjalin kerjasama yang harmonis dengan instansi-instansi terkait\n                        </li>\n                     </ol>\n                     <h2>MOTTO</h2>\n                     <p>\n                        Melayani dengan santun, ramah dan rasional\n                     </p>', 'Tentang Kami', 2);
-INSERT INTO `app_identity` VALUES ('app_address', 'Alamat', 'textarea', 'Jl. Tikusan No. 37, Tikusan, Kec. Kapas, Kab. Bojonegoro 62181', 'Alamat Kantor', 8);
+INSERT INTO `app_identity` VALUES ('app_address', 'Alamat', 'textarea', 'Jl. Ngoro Industrial Park V-2, Ngoro, Mojokerto, Jawa Timur, Indonesia', 'Alamat Kantor', 8);
 INSERT INTO `app_identity` VALUES ('app_brand', 'Logo Aplikasi', 'img', 'assets/welcome/img/molion-logo.png', 'Logo Aplikasi', 3);
 INSERT INTO `app_identity` VALUES ('app_description', 'Deskripsi Applikasi', 'textarea', 'Kata - Kata Ramasalah<br>Exercitatio Optimus Magister Est', 'Deskripsi singkat tentang Aplikasi', 4);
-INSERT INTO `app_identity` VALUES ('app_email', 'Email', 'text', 'admin@moliontoys.com', 'Email Kantor', 10);
+INSERT INTO `app_identity` VALUES ('app_email', 'Email', 'text', 'moliontoysindonesia@gmail.com', 'Email Kantor', 10);
 INSERT INTO `app_identity` VALUES ('app_icon', 'Icon Applikasi', 'img', 'assets/welcome/img/molion-icon.png', 'Gambar Icon Pada Tab Browser', 5);
 INSERT INTO `app_identity` VALUES ('app_maps', 'Map Google', 'textarea', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.1454724485257!2d112.60872670654685!3d-7.559113098843578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78758185271bcb%3A0xafeb02b26ba1666c!2sNgoro%20Industrial%20Park!5e0!3m2!1sen!2sid!4v1649812412231!5m2!1sen!2sid', 'Maps Google Kantor', 11);
 INSERT INTO `app_identity` VALUES ('app_name', 'Nama Applikasi', 'text', 'Molion Toys Indonesia', 'Nama Aplikasi', 6);
@@ -102,7 +102,7 @@ INSERT INTO `app_routes` VALUES (3, 'Profile', 'get', '/admin/profile', 'Admin::
 INSERT INTO `app_routes` VALUES (4, 'Profile', 'post', '/admin/profile-edit', 'Admin::profileEdit', 0, NULL, NULL, 1, 6, 'Edit Data Profile', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
 INSERT INTO `app_routes` VALUES (5, 'Profile', 'post', '/admin/profile-edit-image', 'Admin::profileEditImage', 0, NULL, NULL, 1, 7, 'Edit Image Profile', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
 INSERT INTO `app_routes` VALUES (6, 'Profile', 'post', '/admin/profile-edit-password', 'Admin::profileEditPassword', 0, NULL, NULL, 1, 8, 'Edit Password Profile', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
-INSERT INTO `app_routes` VALUES (7, 'Detail Product', 'get', '/(:any)', 'Welcome::product/$1', 0, NULL, NULL, 1, 11, 'Detail Product', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
+INSERT INTO `app_routes` VALUES (7, 'Detail Product', 'get', '/product/(:any)', 'Welcome::product/$1', 0, NULL, NULL, 1, 11, 'Detail Product', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
 INSERT INTO `app_routes` VALUES (8, 'Detail Blog', 'get', '/blog/(:any)', 'Welcome::blog/$1', 0, NULL, NULL, 1, 10, 'Detail Blog', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
 INSERT INTO `app_routes` VALUES (9, 'Blog', 'get', '/blog', 'Welcome::blog', 0, NULL, NULL, 1, 9, 'Blog', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
 COMMIT;
@@ -197,7 +197,7 @@ CREATE TABLE `auth_logins` (
   PRIMARY KEY (`id`),
   KEY `email` (`email`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 
 -- ----------------------------
 -- Records of auth_logins
@@ -206,6 +206,8 @@ BEGIN;
 INSERT INTO `auth_logins` VALUES (1, '127.0.0.1', 'admin', NULL, '2022-04-12 15:04:15', 0);
 INSERT INTO `auth_logins` VALUES (2, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-13 10:43:12', 1);
 INSERT INTO `auth_logins` VALUES (3, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-13 15:41:27', 1);
+INSERT INTO `auth_logins` VALUES (4, '127.0.0.1', 'admin', NULL, '2022-04-16 09:21:33', 0);
+INSERT INTO `auth_logins` VALUES (5, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-16 09:21:43', 1);
 COMMIT;
 
 -- ----------------------------
@@ -344,17 +346,18 @@ CREATE TABLE `certificate` (
   `icon_certificate` varchar(20) DEFAULT NULL,
   `title_certificate` varchar(255) DEFAULT NULL,
   `description_certificate` text DEFAULT NULL,
-  `image_certificate` varchar(255) DEFAULT NULL,
+  `file_certificate` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_certificate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of certificate
 -- ----------------------------
 BEGIN;
+INSERT INTO `certificate` VALUES (1, 'binoculars', 'ISO 2001:2015', '<p>Sertifikasi ISO 9001 2015 : Sertifikasi Sistem Manajemen Mutu.</p>\n<p>Ada lima hal yang dijabarkan dalam Sertifikasi ISO 9001 2015, yaitu :</p>\n<ul>\n<li><i class=\"bi bi-check-circle-fill\"></i> Sistem Manajemen Kualitas</li>\n<li><i class=\"bi bi-check-circle-fill\"></i> Tanggung Jawab Manajemen</li>\n<li><i class=\"bi bi-check-circle-fill\"></i> Manajemen Sumber Daya</li>\n<li><i class=\"bi bi-check-circle-fill\"></i> Realisasi Produk</li>\n<li><i class=\"bi bi-check-circle-fill\"></i> Pengukuran, Analisa dan Peningkatan</li>\n</ul>\n<p>Sertifikasi ISO 9001 2015 merupakan suatu standar bertaraf internasional untuk Sertifikasi Sistem Manajemen Mutu, atau bisa disebut juga sebagai Sertifikasi Sistem Manajemen Kualitas.</p>', 'ISO 9001 PT. MOLION TOYS INDONESIA-1.jpg.jpg', '2022-04-16 07:57:28', '2022-04-16 07:57:32', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -369,14 +372,17 @@ CREATE TABLE `faq` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_faq`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of faq
 -- ----------------------------
 BEGIN;
-INSERT INTO `faq` VALUES (1, 'Apa itu Molion?', 'Molion adalah ', '2022-04-13 13:20:28', '2022-04-13 13:20:28', NULL);
-INSERT INTO `faq` VALUES (2, 'Dimana Molion itu?', 'Mojokerto', '2022-04-13 13:20:28', '2022-04-13 13:20:28', NULL);
+INSERT INTO `faq` VALUES (1, 'Apa itu Molion?', 'PT. Molion Toys Indonesia merupakan pabrik produksi mainan mesin blow moulding professional.', '2022-04-13 13:20:28', '2022-04-13 13:20:28', NULL);
+INSERT INTO `faq` VALUES (2, 'Apa saja hasil produksi PT. Molion?', 'PT. Molion memproduksi mainan anak, tangka air, ember, furniture blow moulding, danmesin blow lainnya', '2022-04-13 13:20:28', '2022-04-13 13:20:28', NULL);
+INSERT INTO `faq` VALUES (3, 'Bagaimana Ijin dan Legalitas Pabrik Molion?', 'PT. Molion Toys Indonesia telah lulus Sertifikasi Mutu ISO9001:2015. Integritas, Kekuatan dan Kualitas Produk.', '2022-04-13 13:20:28', '2022-04-13 13:20:28', NULL);
+INSERT INTO `faq` VALUES (4, 'Dimana Lokasi PT. Molion Toys Indonesia?', 'PT. Molion Toys Indonesia beralamat di Ngoro Industrial Park V-2, Ngoro, Kabupaten Mojokerto, Jawa Timur, Indonesia.', '2022-04-13 13:20:28', '2022-04-13 13:20:28', NULL);
+INSERT INTO `faq` VALUES (5, 'Bagaimana cara menghubungi PT. Molion Toys Indonesia jika ingin bekerjasama?', 'Kontak kami melalui moliontoysindonesia@gmail.com atau WA ……', '2022-04-13 13:20:28', '2022-04-13 13:20:28', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -400,7 +406,7 @@ CREATE TABLE `home` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `home` VALUES (1, 'Selamat Datang di Molion Toys Indonesia', 'Ucapan selamat datang dsb', 'welcome-home.png', 1, '2022-04-12 10:48:44', '2022-04-12 10:48:47', NULL);
-INSERT INTO `home` VALUES (2, 'Produk Molion', 'Kuda, prusutan dll', 'product-home.png', 0, '2022-04-12 11:04:24', '2022-04-12 11:04:25', NULL);
+INSERT INTO `home` VALUES (2, 'Produk-produk Molion', 'Kuda, prusutan dll', 'product-home.png', 0, '2022-04-12 11:04:24', '2022-04-12 11:04:25', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -418,18 +424,24 @@ CREATE TABLE `image_product` (
   PRIMARY KEY (`id_image_product`),
   KEY `fk produk image` (`id_product`),
   CONSTRAINT `fk produk image` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of image_product
 -- ----------------------------
 BEGIN;
-INSERT INTO `image_product` VALUES (1, 1, 'M1001-01.jpg', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
-INSERT INTO `image_product` VALUES (2, 1, 'M1001-06.jpg', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
-INSERT INTO `image_product` VALUES (3, 1, 'M1001-08.jpg', 3, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
-INSERT INTO `image_product` VALUES (4, 2, 'M1002-01.jpg', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
-INSERT INTO `image_product` VALUES (5, 2, 'M1002-07.jpg', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
-INSERT INTO `image_product` VALUES (6, 2, 'M1002-08.jpg', 3, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (1, 1, '1.png', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (2, 1, '2.png', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (3, 2, '1.png', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (4, 2, '2.png', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (5, 3, '1.png', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (6, 3, '2.png', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (7, 4, '1.png', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (8, 4, '2.png', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (9, 5, '1.png', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (10, 5, '2.png', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (11, 6, '1.png', 1, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
+INSERT INTO `image_product` VALUES (12, 6, '2.png', 2, '2022-04-13 09:22:32', '2022-04-13 09:22:32', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -492,14 +504,18 @@ CREATE TABLE `product` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_product`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
 BEGIN;
-INSERT INTO `product` VALUES (1, 'mainan-kuda-kudaan-anak-rocking-phoenix-001-M1001', 'Mainan Kuda Kudaan Anak Rocking Phoenix 001-M1001', 'Plastik', 300000, 'Ride on deer adalah mainan tunggang-tunggangan atau kuda-kudaan untuk anak. Mainan terbuat dari plastik, sehingga si kecil akan nyaman saat menaikinya. Dapat membantu anak menjadi lebih aktif dan ceria saat bermain, disarankan untuk anak yang sudah berumur > 1thn. <br>Bermain sepeda kuda  juga bermanfaat untuk melatih keseimbangan tubuh balita serta dapat mempercepat pertumbuhan tulang. Selain melatih motorik kasar, mainan kuda-kudaan juga berguna untuk memperbesar dan memperpanjang masa tulang, sehingga pertumbuhan tinggi badan akan semakin optimal. Menurut hasil penelitian yang pernah dilakukan, gerakan olahraga melompat dan berlari yang sering dilakukan ketika bermain kuda.', '2022-04-13 09:14:04', '2022-04-13 09:14:05', NULL);
-INSERT INTO `product` VALUES (2, 'mainan-kuda-kudaan-anak-rocking-phoenix-001-M1002', 'Mainan Kuda Kudaan Anak Rocking Phoenix 001-M1002', 'Plastik', 500000, 'Ride on deer adalah mainan tunggang-tunggangan atau kuda-kudaan untuk anak. Mainan terbuat dari plastik, sehingga si kecil akan nyaman saat menaikinya. Dapat membantu anak menjadi lebih aktif dan ceria saat bermain, disarankan untuk anak yang sudah berumur > 1thn. <br><br>Bermain sepeda kuda  juga bermanfaat untuk melatih keseimbangan tubuh balita serta dapat mempercepat pertumbuhan tulang. Selain melatih motorik kasar, mainan kuda-kudaan juga berguna untuk memperbesar dan memperpanjang masa tulang, sehingga pertumbuhan tinggi badan akan semakin optimal. Menurut hasil penelitian yang pernah dilakukan, gerakan olahraga melompat dan berlari yang sering dilakukan ketika bermain kuda.', '2022-04-13 09:17:03', '2022-04-13 09:17:05', NULL);
+INSERT INTO `product` VALUES (1, 'angle-horse', 'ANGLE HORSE', 'Plastik', 300000, 'Ride on deer adalah mainan tunggang-tunggangan atau kuda-kudaan untuk anak. Mainan terbuat dari plastik, sehingga si kecil akan nyaman saat menaikinya. Dapat membantu anak menjadi lebih aktif dan ceria saat bermain, disarankan untuk anak yang sudah berumur > 1thn. <br>Bermain sepeda kuda  juga bermanfaat untuk melatih keseimbangan tubuh balita serta dapat mempercepat pertumbuhan tulang. Selain melatih motorik kasar, mainan kuda-kudaan juga berguna untuk memperbesar dan memperpanjang masa tulang, sehingga pertumbuhan tinggi badan akan semakin optimal. Menurut hasil penelitian yang pernah dilakukan, gerakan olahraga melompat dan berlari yang sering dilakukan ketika bermain kuda.', '2022-04-13 09:14:04', '2022-04-13 09:14:05', NULL);
+INSERT INTO `product` VALUES (2, 'phoenix-horse', 'PHOENIX HORSE', 'Plastik', 500000, 'Ride on deer adalah mainan tunggang-tunggangan atau kuda-kudaan untuk anak. Mainan terbuat dari plastik, sehingga si kecil akan nyaman saat menaikinya. Dapat membantu anak menjadi lebih aktif dan ceria saat bermain, disarankan untuk anak yang sudah berumur > 1thn. <br><br>Bermain sepeda kuda  juga bermanfaat untuk melatih keseimbangan tubuh balita serta dapat mempercepat pertumbuhan tulang. Selain melatih motorik kasar, mainan kuda-kudaan juga berguna untuk memperbesar dan memperpanjang masa tulang, sehingga pertumbuhan tinggi badan akan semakin optimal. Menurut hasil penelitian yang pernah dilakukan, gerakan olahraga melompat dan berlari yang sering dilakukan ketika bermain kuda.', '2022-04-13 09:17:03', '2022-04-13 09:17:05', NULL);
+INSERT INTO `product` VALUES (3, 'rocking-deer', 'ROCKING DEER', 'Plastik', 500000, 'Ride on deer adalah mainan tunggang-tunggangan atau kuda-kudaan untuk anak. Mainan terbuat dari plastik, sehingga si kecil akan nyaman saat menaikinya. Dapat membantu anak menjadi lebih aktif dan ceria saat bermain, disarankan untuk anak yang sudah berumur > 1thn. <br><br>Bermain sepeda kuda  juga bermanfaat untuk melatih keseimbangan tubuh balita serta dapat mempercepat pertumbuhan tulang. Selain melatih motorik kasar, mainan kuda-kudaan juga berguna untuk memperbesar dan memperpanjang masa tulang, sehingga pertumbuhan tinggi badan akan semakin optimal. Menurut hasil penelitian yang pernah dilakukan, gerakan olahraga melompat dan berlari yang sering dilakukan ketika bermain kuda.', '2022-04-13 09:17:03', '2022-04-13 09:17:05', NULL);
+INSERT INTO `product` VALUES (4, 'rocking-horse', 'ROCKING HORSE', 'Plastik', 500000, 'Ride on deer adalah mainan tunggang-tunggangan atau kuda-kudaan untuk anak. Mainan terbuat dari plastik, sehingga si kecil akan nyaman saat menaikinya. Dapat membantu anak menjadi lebih aktif dan ceria saat bermain, disarankan untuk anak yang sudah berumur > 1thn. <br><br>Bermain sepeda kuda  juga bermanfaat untuk melatih keseimbangan tubuh balita serta dapat mempercepat pertumbuhan tulang. Selain melatih motorik kasar, mainan kuda-kudaan juga berguna untuk memperbesar dan memperpanjang masa tulang, sehingga pertumbuhan tinggi badan akan semakin optimal. Menurut hasil penelitian yang pernah dilakukan, gerakan olahraga melompat dan berlari yang sering dilakukan ketika bermain kuda.', '2022-04-13 09:17:03', '2022-04-13 09:17:05', NULL);
+INSERT INTO `product` VALUES (5, 'rocking-panda', 'ROCKING PANDA', 'Plastik', 500000, 'Ride on deer adalah mainan tunggang-tunggangan atau kuda-kudaan untuk anak. Mainan terbuat dari plastik, sehingga si kecil akan nyaman saat menaikinya. Dapat membantu anak menjadi lebih aktif dan ceria saat bermain, disarankan untuk anak yang sudah berumur > 1thn. <br><br>Bermain sepeda kuda  juga bermanfaat untuk melatih keseimbangan tubuh balita serta dapat mempercepat pertumbuhan tulang. Selain melatih motorik kasar, mainan kuda-kudaan juga berguna untuk memperbesar dan memperpanjang masa tulang, sehingga pertumbuhan tinggi badan akan semakin optimal. Menurut hasil penelitian yang pernah dilakukan, gerakan olahraga melompat dan berlari yang sering dilakukan ketika bermain kuda.', '2022-04-13 09:17:03', '2022-04-13 09:17:05', NULL);
+INSERT INTO `product` VALUES (6, 'perosotan', 'PEROSOTAN', 'Plastik', 500000, 'Mainan Perosotan anak yang terbuat dari bahan plastik HDPE sehingga tidak sakit saat digunakan untuk anak anda. Prosotan ini dilengkapi dengan pegangan yang lebih lebar dan luas menjadikan anti slip saat digunakan anak anda.\n<br>\nPerosotan ini memberikan manfaat untuk si kecil, seperti melatih keseimbangan, koordinasi, dan kesadaran spasial. Prosotan dengan model panda yang lucu dilengkapi dengan ring basket pada bagian samping nya, menjadikan bisa digunakan untuk latihan memanjat, meluncur dan bermain basket. Prosotan ini memiliki bahan yang tebal sehingga tidak mudah patah saat digunakan meluncur untuk anak anda. Jalur luncuran anak juga licin menjadikan anak lebih mulus saat meluncur\n<br>\nSPESIFIKASI:\n<ol>\n<li>Terbuat dari bahan plastik HDPE sehingga memiliki daya tahan yang lebih kuat</li>\n<li>Memiliki handle tang yang lembut dan lebih luas</li>\n<li>Prosotan ini juga dilengkapi dengan ring basket pada samping kiri sehingga aktivitas anak lebih banyak dan lebih beragam</li>\n<li>Prosotan ini dilengkapi dengan pijakan yang memiliki takstur sehingga anti slip saat digunakan untuk memanjat</li>\n<li>Desain yang mewah dan lucu</li>\n<li>Body lebih tebal menjadikan lebih kokoh saat digunakan</li>\n<li>Memiliki bahan yang premium dan aman digunakan untuk anak anak</li>\n</ol>', '2022-04-13 09:17:03', '2022-04-13 09:17:03', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -587,7 +603,7 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 'asnanmustakim126@gmail.com', 'admin', '$2y$10$gogR6IMuOOiIHvGKZhZjz.FXgwLcMO7otBuj.SwZqG0II7pZBmsr.', 'Admin Molion Toys', 'P', 'Mojokerto', '082334282708', 'default.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-04-13 10:42:20', '2022-04-13 15:39:51', NULL);
+INSERT INTO `users` VALUES (1, 'asnanmustakim126@gmail.com', 'admin', '$2y$10$gogR6IMuOOiIHvGKZhZjz.FXgwLcMO7otBuj.SwZqG0II7pZBmsr.', 'Admin Molion Toys', 'L', 'Mojokerto', '082334282708', 'default.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-04-13 10:42:20', '2022-04-16 09:22:47', NULL);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

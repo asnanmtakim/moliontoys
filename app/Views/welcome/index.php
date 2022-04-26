@@ -9,13 +9,13 @@
          <div class="container">
             <div class="row justify-content-center gy-6">
 
-               <div class="col-lg-12 col-md-12">
+               <div class="col-lg-6 col-md-8">
                   <img src="<?= base_url(); ?>/uploads/home/<?= $hm['image_home']; ?>" alt="" class="img-fluid img">
                </div>
 
-               <div class="col-lg-11 text-center">
+               <div class="col-lg-9 text-center">
                   <h2><?= $hm['title_home']; ?></h2>
-                  <!-- <p><?= $hm['description_home']; ?></p> -->
+                  <p><?= $hm['description_home']; ?></p>
                </div>
 
             </div>
