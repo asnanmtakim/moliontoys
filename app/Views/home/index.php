@@ -162,8 +162,8 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        type: "GET",
-                        url: BASE_URL + "/admin/home-delete/",
+                        type: "POST",
+                        url: BASE_URL + "/admin/home-delete",
                         data: {
                             id: id
                         },
