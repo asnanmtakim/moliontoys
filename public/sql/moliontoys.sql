@@ -11,7 +11,7 @@
  Target Server Version : 100703
  File Encoding         : 65001
 
- Date: 16/04/2022 11:36:37
+ Date: 27/04/2022 10:01:24
 */
 
 SET NAMES utf8;
@@ -23,8 +23,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `about`;
 CREATE TABLE `about` (
   `id_about` int(11) NOT NULL AUTO_INCREMENT,
-  `title_about` varchar(255) DEFAULT NULL,
   `description_about` text DEFAULT NULL,
+  `visi_about` text DEFAULT NULL,
+  `misi_about` text DEFAULT NULL,
   `image_about` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -36,7 +37,7 @@ CREATE TABLE `about` (
 -- Records of about
 -- ----------------------------
 BEGIN;
-INSERT INTO `about` VALUES (1, 'Tentang', 'PT Molion Toys Indonesia adalah pabrik produksi mainan blow moulding profesional. Ini memiliki lebih dari 10 mesin blow moulding 90-120 liter. Selain mainan, pabrik kami juga dapat memproduksi kotak alat, tangki air, ember, furnitur blow moulding, dan mesin blow moulding lainnya tentang produk.<br><br>Sebagai perusahaan produksi dan pemrosesan profesional, pabrik kami memiliki sistem manajemen mutu yang lengkap dan ilmiah. Telah lulus sertifikasi mutu ISO9001:2015. Integritas, kekuatan dan kualitas produk pt.molion toys indonesia telah diakui oleh industri. Selamat datang teman-teman dari semua lapisan masyarakat untuk mengunjungi, membimbing dan bernegosiasi bisnis.', 'about.jpg', '2022-04-12 11:20:44', '2022-04-12 11:20:46', NULL);
+INSERT INTO `about` VALUES (1, '<p>PT Molion Toys Indonesia adalah pabrik produksi mainan blow moulding profesional. Ini memiliki lebih dari 10 mesin blow moulding 90-120 liter. Selain mainan, pabrik kami juga dapat memproduksi kotak alat, tangki air, ember, furnitur blow moulding, dan mesin blow moulding lainnya tentang produk.</p><p>Sebagai perusahaan produksi dan pemrosesan profesional, pabrik kami memiliki sistem manajemen mutu yang lengkap dan ilmiah. Telah lulus sertifikasi mutu ISO9001:2015. Integritas, kekuatan dan kualitas produk pt.molion toys indonesia telah diakui oleh industri. Selamat datang teman-teman dari semua lapisan masyarakat untuk mengunjungi, membimbing dan bernegosiasi bisnis.</p>', 'INI VISI Perusahaan', 'INI MISI Perusahaan', 'about.jpg', '2022-04-12 11:20:44', '2022-04-27 08:36:32', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -57,17 +58,14 @@ CREATE TABLE `app_identity` (
 -- Records of app_identity
 -- ----------------------------
 BEGIN;
-INSERT INTO `app_identity` VALUES ('app_about', 'Tentang Aplikasi', 'textarea', 'Molion Toys Indonesia', NULL, 1);
-INSERT INTO `app_identity` VALUES ('app_about_us', 'Tentang Kami', 'textarea', '<h2>VISI</h2>\n                     <p>\n                        Menjadi Fasilitas Kesehatan Primer yang berkualitas dan bermanfaat bagi masyarakat dalam bidang kesehatan sesuai dengan kompetensinya\n                     </p>\n                     <h2>MISI</h2>\n                     <ol>\n                        <li>\n                           Melaksanakan kegiatan preventif, promotif, kuratif, dan rehabilitatif (memberikan pelayanan secara holistik)\n                        </li>\n                        <li>\n                           Melayani dengan santun dan ramah\n                        </li>\n                        <li>\n                           Menjalin kerjasama yang harmonis dengan instansi-instansi terkait\n                        </li>\n                     </ol>\n                     <h2>MOTTO</h2>\n                     <p>\n                        Melayani dengan santun, ramah dan rasional\n                     </p>', 'Tentang Kami', 2);
-INSERT INTO `app_identity` VALUES ('app_address', 'Alamat', 'textarea', 'Jl. Ngoro Industrial Park V-2, Ngoro, Mojokerto, Jawa Timur, Indonesia', 'Alamat Kantor', 8);
-INSERT INTO `app_identity` VALUES ('app_brand', 'Logo Aplikasi', 'img', 'assets/welcome/img/molion-logo.png', 'Logo Aplikasi', 3);
-INSERT INTO `app_identity` VALUES ('app_description', 'Deskripsi Applikasi', 'textarea', 'Kata - Kata Ramasalah<br>Exercitatio Optimus Magister Est', 'Deskripsi singkat tentang Aplikasi', 4);
-INSERT INTO `app_identity` VALUES ('app_email', 'Email', 'text', 'moliontoysindonesia@gmail.com', 'Email Kantor', 10);
-INSERT INTO `app_identity` VALUES ('app_icon', 'Icon Applikasi', 'img', 'assets/welcome/img/molion-icon.png', 'Gambar Icon Pada Tab Browser', 5);
-INSERT INTO `app_identity` VALUES ('app_maps', 'Map Google', 'textarea', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.1454724485257!2d112.60872670654685!3d-7.559113098843578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78758185271bcb%3A0xafeb02b26ba1666c!2sNgoro%20Industrial%20Park!5e0!3m2!1sen!2sid!4v1649812412231!5m2!1sen!2sid', 'Maps Google Kantor', 11);
-INSERT INTO `app_identity` VALUES ('app_name', 'Nama Applikasi', 'text', 'Molion Toys Indonesia', 'Nama Aplikasi', 6);
-INSERT INTO `app_identity` VALUES ('app_phone', 'Phone', 'textarea', '(0353)-892713', 'Telp Kantor', 9);
-INSERT INTO `app_identity` VALUES ('app_title', 'Judul Browser', 'text', 'Molion Toys', 'Judul Aplikasi pada Tab Browser', 7);
+INSERT INTO `app_identity` VALUES ('app_address', 'Alamat', 'textarea', 'Jl. Ngoro Industrial Park V-2, Ngoro, Mojokerto, Jawa Timur, Indonesia', 'Alamat Kantor', 5);
+INSERT INTO `app_identity` VALUES ('app_brand', 'Logo Aplikasi', 'img', 'assets/welcome/img/molion-logo.png', 'Logo Aplikasi', 4);
+INSERT INTO `app_identity` VALUES ('app_email', 'Email', 'text', 'moliontoysindonesia@gmail.com', 'Email Kantor', 6);
+INSERT INTO `app_identity` VALUES ('app_icon', 'Icon Applikasi', 'img', 'assets/welcome/img/app_icon_1650963364.png', 'Gambar Icon Pada Tab Browser', 3);
+INSERT INTO `app_identity` VALUES ('app_maps', 'Map Google', 'textarea', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.1454724485257!2d112.60872670654685!3d-7.559113098843578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78758185271bcb%3A0xafeb02b26ba1666c!2sNgoro%20Industrial%20Park!5e0!3m2!1sen!2sid!4v1649812412231!5m2!1sen!2sid', 'Maps Google Kantor', 8);
+INSERT INTO `app_identity` VALUES ('app_name', 'Nama Aplikasi', 'text', 'PT. Molion Toys Indonesia', 'Nama Aplikasi', 2);
+INSERT INTO `app_identity` VALUES ('app_phone', 'Phone', 'text', '(0353)-892713', 'Telp Kantor', 7);
+INSERT INTO `app_identity` VALUES ('app_title', 'Judul Aplikasi', 'text', 'Molion Toys', 'Judul Aplikasi', 1);
 COMMIT;
 
 -- ----------------------------
@@ -90,7 +88,7 @@ CREATE TABLE `app_routes` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_route`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of app_routes
@@ -105,6 +103,20 @@ INSERT INTO `app_routes` VALUES (6, 'Profile', 'post', '/admin/profile-edit-pass
 INSERT INTO `app_routes` VALUES (7, 'Detail Product', 'get', '/product/(:any)', 'Welcome::product/$1', 0, NULL, NULL, 1, 11, 'Detail Product', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
 INSERT INTO `app_routes` VALUES (8, 'Detail Blog', 'get', '/blog/(:any)', 'Welcome::blog/$1', 0, NULL, NULL, 1, 10, 'Detail Blog', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
 INSERT INTO `app_routes` VALUES (9, 'Blog', 'get', '/blog', 'Welcome::blog', 0, NULL, NULL, 1, 9, 'Blog', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
+INSERT INTO `app_routes` VALUES (10, 'Beranda', 'get', '/admin/home', 'Admin::indexHome', 1, 'filter', 'login', 1, 13, 'Branda', '2022-04-13 14:20:52', '2022-04-13 14:20:52', NULL);
+INSERT INTO `app_routes` VALUES (11, 'Beranda', 'get', '/admin/home-add', 'Admin::addHome', 1, 'filter', 'login', 1, 14, 'Page Add Beranda', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
+INSERT INTO `app_routes` VALUES (12, 'Beranda', 'post', '/admin/home-add', 'Admin::saveHome', 1, 'filter', 'login', 1, 15, 'Save Beranda', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
+INSERT INTO `app_routes` VALUES (13, 'Beranda', 'get', '/admin/home-edit/(:any)', 'Admin::editHome/$1', 1, 'filter', 'login', 1, 16, 'Page Edit Beranda', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
+INSERT INTO `app_routes` VALUES (14, 'Beranda', 'post', '/admin/home-edit', 'Admin::updateHome', 1, 'filter', 'login', 1, 17, 'Update Beranda', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
+INSERT INTO `app_routes` VALUES (15, 'Beranda', 'post', '/admin/home-delete', 'Admin::deleteHome/$1', 1, 'filter', 'login', 1, 18, 'Delete Beranda', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
+INSERT INTO `app_routes` VALUES (16, 'Set Aplikasi', 'get', '/admin/apps', 'Admin::indexApps', 1, 'filter', 'login', 1, 12, 'Page Setting Aplikasi', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
+INSERT INTO `app_routes` VALUES (17, 'Set Aplikasi', 'post', '/admin/apps', 'Admin::updateApps', 1, 'filter', 'login', 1, 12, 'Update Aplikasi', '2022-04-26 12:05:51', '2022-04-26 12:05:51', NULL);
+INSERT INTO `app_routes` VALUES (18, 'About', 'get', '/admin/about', 'Admin::indexAbout', 1, 'filter', 'login', 1, 21, 'Page Form About', '2022-01-03 13:54:50', '2022-01-03 13:54:50', NULL);
+INSERT INTO `app_routes` VALUES (19, 'About', 'post', '/admin/about', 'Admin::updateAbout', 1, 'filter', 'login', 1, 22, 'Update About', '2022-04-26 12:05:51', '2022-04-26 12:05:51', NULL);
+INSERT INTO `app_routes` VALUES (20, 'Kirim Pesan', 'post', '/sent-message', 'Welcome::form', 0, NULL, NULL, 1, 1, 'Form Pesan', '2022-01-03 13:54:50', '2022-01-03 13:54:53', NULL);
+INSERT INTO `app_routes` VALUES (21, 'Contact', 'get', '/admin/contact', 'Admin::indexContact', 1, 'filter', 'login', 1, 25, 'Page Contact', '2022-04-27 08:46:49', '2022-04-27 08:46:49', NULL);
+INSERT INTO `app_routes` VALUES (22, 'Contact', 'post', '/admin/contact-email', 'Admin::emailContact', 1, 'filter', 'login', 1, 26, 'Email Contact', '2022-04-27 08:46:49', '2022-04-27 08:46:49', NULL);
+INSERT INTO `app_routes` VALUES (23, 'Contact', 'post', '/admin/contact-one', 'Admin::getOneContact', 1, 'filter', 'login', 1, 27, 'Detail Contact', '2022-04-27 08:46:49', '2022-04-27 08:46:49', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -197,7 +209,7 @@ CREATE TABLE `auth_logins` (
   PRIMARY KEY (`id`),
   KEY `email` (`email`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 
 -- ----------------------------
 -- Records of auth_logins
@@ -208,6 +220,13 @@ INSERT INTO `auth_logins` VALUES (2, '127.0.0.1', 'asnanmustakim126@gmail.com', 
 INSERT INTO `auth_logins` VALUES (3, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-13 15:41:27', 1);
 INSERT INTO `auth_logins` VALUES (4, '127.0.0.1', 'admin', NULL, '2022-04-16 09:21:33', 0);
 INSERT INTO `auth_logins` VALUES (5, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-16 09:21:43', 1);
+INSERT INTO `auth_logins` VALUES (6, '127.0.0.1', 'admin', NULL, '2022-04-25 08:02:49', 0);
+INSERT INTO `auth_logins` VALUES (7, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-25 08:02:57', 1);
+INSERT INTO `auth_logins` VALUES (8, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-26 08:49:16', 1);
+INSERT INTO `auth_logins` VALUES (9, '127.0.0.1', 'admin', NULL, '2022-04-27 07:27:38', 0);
+INSERT INTO `auth_logins` VALUES (10, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-27 07:28:33', 1);
+INSERT INTO `auth_logins` VALUES (11, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-27 07:47:00', 1);
+INSERT INTO `auth_logins` VALUES (12, '127.0.0.1', 'asnanmustakim126@gmail.com', 1, '2022-04-27 09:34:15', 1);
 COMMIT;
 
 -- ----------------------------
@@ -361,6 +380,32 @@ INSERT INTO `certificate` VALUES (1, 'binoculars', 'ISO 2001:2015', '<p>Sertifik
 COMMIT;
 
 -- ----------------------------
+-- Table structure for contacts
+-- ----------------------------
+DROP TABLE IF EXISTS `contacts`;
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `status` int(11) DEFAULT 0,
+  `subject_email` varchar(255) DEFAULT NULL,
+  `balas` text DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of contacts
+-- ----------------------------
+BEGIN;
+INSERT INTO `contacts` VALUES (1, 'Asnan Mustakim', 'asnanmustakim126@gmail.com', 'Tes', 'tes aja', 1, 'Coba Balas', 'ini adalah pesan', '2022-04-27 09:34:05', '2022-04-27 09:34:40', NULL);
+COMMIT;
+
+-- ----------------------------
 -- Table structure for faq
 -- ----------------------------
 DROP TABLE IF EXISTS `faq`;
@@ -399,14 +444,16 @@ CREATE TABLE `home` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_home`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of home
 -- ----------------------------
 BEGIN;
-INSERT INTO `home` VALUES (1, 'Selamat Datang di Molion Toys Indonesia', 'Ucapan selamat datang dsb', 'welcome-home.png', 1, '2022-04-12 10:48:44', '2022-04-12 10:48:47', NULL);
-INSERT INTO `home` VALUES (2, 'Produk-produk Molion', 'Kuda, prusutan dll', 'product-home.png', 0, '2022-04-12 11:04:24', '2022-04-12 11:04:25', NULL);
+INSERT INTO `home` VALUES (1, 'PT. Molion Toys Indonesia', 'Selamat Datang di Molion Toys Indonesia', 'welcome-home.png', 1, '2022-04-12 10:48:44', '2022-04-12 10:48:47', NULL);
+INSERT INTO `home` VALUES (2, 'Produk-produk Molion', 'Kuda-kudaan dan Perosotan', 'product-home.png', 0, '2022-04-12 11:04:24', '2022-04-12 11:04:25', NULL);
+INSERT INTO `home` VALUES (8, 'Tes Revisi 2', 'Ini tes beranda revisi 2', 'home_1650881037.png', 0, '2022-04-25 16:37:26', '2022-04-25 17:22:07', '2022-04-25 17:22:07');
+INSERT INTO `home` VALUES (9, 'Tes 2', 'Deskripsi Tes', 'home_1650882322.png', 0, '2022-04-25 17:25:22', '2022-04-27 07:51:53', '2022-04-27 07:51:53');
 COMMIT;
 
 -- ----------------------------
@@ -603,7 +650,7 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 BEGIN;
-INSERT INTO `users` VALUES (1, 'asnanmustakim126@gmail.com', 'admin', '$2y$10$gogR6IMuOOiIHvGKZhZjz.FXgwLcMO7otBuj.SwZqG0II7pZBmsr.', 'Admin Molion Toys', 'L', 'Mojokerto', '082334282708', 'default.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2022-04-13 10:42:20', '2022-04-16 09:22:47', NULL);
+INSERT INTO `users` VALUES (1, 'asnanmustakim126@gmail.com', 'admin', '$2y$10$gogR6IMuOOiIHvGKZhZjz.FXgwLcMO7otBuj.SwZqG0II7pZBmsr.', 'Admin Molion Toys', 'L', 'Mojokerto', '082334282708', 'default.jpg', '4cc7f01555889b607fe6daf8d9a66c8c', NULL, '2022-04-27 08:46:20', NULL, NULL, NULL, 1, 0, '2022-04-13 10:42:20', '2022-04-27 07:46:20', NULL);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

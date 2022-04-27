@@ -373,7 +373,7 @@
                      <td class="wrapper">
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                            <tr>
-                              <td class="align-center"><img src="<?= $app_identity["app_icon"]; ?>" class="" alt=""></td>
+                              <td class="align-center"><img style="height: 50px;" src="<?= $app_identity["app_icon"]; ?>" class="" alt=""></td>
                            </tr>
                            <tr>
                               <td class="align-center">

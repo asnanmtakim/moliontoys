@@ -365,7 +365,7 @@ class Admin extends BaseController
     }
     public function deleteHome()
     {
-        $id_home = $this->request->getPost('id');
+        $id_home = $this->request->getVar('id');
         $homeModel = new \App\Models\HomeModel();
         $home = $homeModel->find($id_home);
         if (empty($home)) {
