@@ -55,7 +55,7 @@
                 <?php if (in_groups('admin')) : ?>
                     <li class="nav-header">Panel Aplikasi</li>
                     <li class="nav-item">
-                        <a href="<?= base_url(); ?>/admin/apps" class="nav-link <?= $page == 'app' ? 'active' : '' ?>">
+                        <a href="<?= base_url(); ?>/admin/apps" class="nav-link <?= $page == 'apps' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-tablet-alt"></i>
                             <p>
                                 Setting Aplikasi

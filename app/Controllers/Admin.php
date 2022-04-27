@@ -208,6 +208,88 @@ class Admin extends BaseController
         }
     }
 
+    public function indexApps()
+    {
+        $appsModel = new \App\Models\AppsModel();
+        $data = [
+            'title' => 'Tambah Beranda',
+            'page' => 'apps',
+            'apps' => $appsModel->orderBy('conf_order', 'ASC')->find(),
+            'validation' => \Config\Services::validation()
+        ];
+        return view('apps/index', $data);
+    }
+
+    public function updateApps()
+    {
+        $validation = \Config\Services::validation();
+        $pesan = [];
+        $appsModel = new \App\Models\AppsModel();
+        $apps = $appsModel->orderBy('conf_order', 'ASC')->find();
+        if ($this->validate($this->rulesValidationApps())) {
+            foreach ($apps as $app) {
+                $data = [];
+                if ($app['conf_type'] == 'text' || $app['conf_type'] == 'textarea') {
+                    $data = [
+                        'conf_char' => $app['conf_char'],
+                        'conf_value' => $this->request->getPost($app['conf_char']),
+                    ];
+                } elseif ($app['conf_type'] == 'img') {
+                    if ($this->request->getPost($app['conf_char']) != "undefined") {
+                        $imageApps = $this->request->getPost($app['conf_char']);
+                        $imageApps = str_replace('data:image/png;base64,', '', $imageApps);
+                        $imageApps = str_replace(' ', '+', $imageApps);
+                        $dataImage = base64_decode($imageApps);
+                        $imageName = $app['conf_char'] . '_' . time() . '.png';
+                        $pathName = 'assets/welcome/img/' . $imageName;
+                        file_put_contents($pathName, $dataImage);
+                        if (file_exists($app['conf_value'])) {
+                            unlink($app['conf_value']);
+                        }
+                        $data = [
+                            'conf_char' => $app['conf_char'],
+                            'conf_value' => $pathName,
+                        ];
+                    }
+                }
+
+                if ($data != []) {
+                    $query = $appsModel->save($data);
+                }
+            }
+            if ($query) {
+                session()->setFlashdata('message_success', 'Data Beranda Berhasil Diubah');
+                echo json_encode(array('status' => 200, 'pesan' => 'Berhasil diubah !!'));
+            } else {
+                echo json_encode(array('status' => 0, 'pesan' => 'Gagal diubah !!'));
+            }
+        } else {
+            foreach ($apps as $app) {
+                $pesan[$app['conf_char']] = $validation->getError($app['conf_char']);
+            }
+            echo json_encode(array('status' => 400, 'pesan' => $pesan));
+        }
+    }
+
+    private function rulesValidationApps()
+    {
+        $config = [];
+        $appsModel = new \App\Models\AppsModel();
+        $apps = $appsModel->orderBy('conf_order', 'ASC')->find();
+        foreach ($apps as $app) {
+            if ($app['conf_type'] == 'text' || $app['conf_type'] == 'textarea') {
+                $config[$app['conf_char']] = [
+                    'label' => $app['conf_name'],
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} harus diisi.',
+                    ]
+                ];
+            }
+        }
+        return $config;
+    }
+
     public function indexHome()
     {
         $home = new \App\Models\HomeModel();
@@ -223,7 +305,6 @@ class Admin extends BaseController
 
     public function addHome()
     {
-        $db = db_connect();
         $data = [
             'title' => 'Tambah Beranda',
             'page' => 'home',

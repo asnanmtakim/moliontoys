@@ -38,7 +38,6 @@ $app_identity = app_identity();
                         <div class="widget-user-header bg-primary">
                             <h3 class="widget-user-username">Selamat Datang </h3>
                             <h5 class="widget-user-desc"><?= $app_identity['app_name']; ?></h5>
-                            <!-- <h6 class="widget-user-desc"><?= $app_identity['app_about']; ?></h6> -->
                         </div>
                         <div class="widget-user-image">
                             <img class="img-circle elevation-2" src="<?= $app_identity['app_brand']; ?>" alt="Logo UCA">

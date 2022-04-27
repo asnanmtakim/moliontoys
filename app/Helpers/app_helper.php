@@ -68,19 +68,16 @@ function app_identity()
    $db = \Config\Database::connect();
    $builder = $db->table('app_identity');
    $output = $builder->orderBy('conf_order', 'ASC')->get()->getResultArray();
-   $appTitle = $output[6]['conf_value'];
+   $appTitle = $output[0]['conf_value'];
    $output = [
       'app_title' => $appTitle,
-      'app_name' => $output[5]['conf_value'],
-      'app_icon' => base_url() . '/' . $output[4]['conf_value'],
-      'app_description' => $output[3]['conf_value'],
-      'app_brand' => base_url() . '/' . $output[2]['conf_value'],
-      'app_about_us' => $output[1]['conf_value'],
-      'app_about' => $output[0]['conf_value'],
-      'app_address' => $output[7]['conf_value'],
-      'app_phone' => $output[8]['conf_value'],
-      'app_email' => $output[9]['conf_value'],
-      'app_maps' => $output[10]['conf_value'],
+      'app_name' => $output[1]['conf_value'],
+      'app_icon' => base_url() . '/' . $output[2]['conf_value'],
+      'app_brand' => base_url() . '/' . $output[3]['conf_value'],
+      'app_address' => $output[4]['conf_value'],
+      'app_email' => $output[5]['conf_value'],
+      'app_phone' => $output[6]['conf_value'],
+      'app_maps' => $output[7]['conf_value'],
    ];
    return $output;
 }
