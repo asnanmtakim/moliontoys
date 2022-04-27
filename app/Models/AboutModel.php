@@ -11,6 +11,6 @@ class AboutModel extends Model
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $allowedFields = [
-        'title_about', 'description_about', 'image_about', 'created_at', 'updated_at', 'deleted_at'
+        'description_about', 'visi_about', 'misi_about', 'image_about', 'created_at', 'updated_at', 'deleted_at'
     ];
 }

@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h2>Blog</h2>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="<?= base_url(); ?>">Home</a></li>
                     <li>Blog</li>
                 </ol>
             </div>
@@ -28,39 +28,46 @@
                 <div class="col-lg-8">
 
                     <div class="row gy-4 posts-list">
+                        <?php if ($blog != []) : ?>
+                            <?php foreach ($blog as $bg) : ?>
+                                <div class="col-lg-6">
+                                    <article class="d-flex flex-column">
 
-                        <?php foreach ($blog as $bg) : ?>
-                            <div class="col-lg-6">
-                                <article class="d-flex flex-column">
+                                        <div class="post-img">
+                                            <img src="<?= base_url(); ?>/uploads/blog/<?= $bg['image_blog']; ?>" alt="" class="img-fluid">
+                                        </div>
 
-                                    <div class="post-img">
-                                        <img src="<?= base_url(); ?>/uploads/blog/<?= $bg['image_blog']; ?>" alt="" class="img-fluid">
-                                    </div>
+                                        <h2 class="title">
+                                            <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>"><?= $bg['title_blog']; ?></a>
+                                        </h2>
 
-                                    <h2 class="title">
-                                        <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>"><?= $bg['title_blog']; ?></a>
-                                    </h2>
+                                        <div class="meta-top">
+                                            <ul>
+                                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>"><?= $bg['fullname']; ?></a></li>
+                                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>"><time datetime="<?= $bg['date_blog']; ?>"><?= format_tanggal($bg['date_blog']); ?></time></a></li>
+                                            </ul>
+                                        </div>
 
-                                    <div class="meta-top">
-                                        <ul>
-                                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>"><?= $bg['fullname']; ?></a></li>
-                                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>"><time datetime="<?= $bg['date_blog']; ?>"><?= format_tanggal($bg['date_blog']); ?></time></a></li>
-                                        </ul>
-                                    </div>
+                                        <div class="content">
+                                            <p>
+                                                <?= fromat_substr($bg['description_blog'], 100); ?>...
+                                            </p>
+                                        </div>
 
-                                    <div class="content">
-                                        <p>
-                                            <?= fromat_substr($bg['description_blog'], 100); ?>...
-                                        </p>
-                                    </div>
+                                        <div class="read-more mt-auto align-self-end">
+                                            <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>">Baca Lebih Lanjut</a>
+                                        </div>
 
-                                    <div class="read-more mt-auto align-self-end">
-                                        <a href="<?= base_url(); ?>/blog/<?= $bg['slug_blog']; ?>">Baca Lebih Lanjut</a>
-                                    </div>
-
-                                </article>
-                            </div><!-- End post list item -->
-                        <?php endforeach; ?>
+                                    </article>
+                                </div><!-- End post list item -->
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <div class="col-lg-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <p class="m-0 text-center">Mohon maaf, blog yang anda cari tidak ditemukan.</p>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div><!-- End blog posts list -->
 
                     <?= $pager->links('blog', 'blog_pagination') ?>
@@ -73,8 +80,8 @@
 
                         <div class="sidebar-item search-form">
                             <h3 class="sidebar-title">Search</h3>
-                            <form action="" class="mt-3">
-                                <input type="text">
+                            <form action="<?= base_url(); ?>/blog" class="mt-3" method="GET">
+                                <input type="text" name="search">
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
                         </div><!-- End sidebar search formn-->

@@ -11,8 +11,8 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h2>Detail Blog</h2>
                 <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="<?= base_url(); ?>">Home</a></li>
+                    <li><a href="<?= base_url(); ?>/blog">Blog</a></li>
                     <li>Detail Blog</li>
                 </ol>
             </div>
@@ -50,7 +50,7 @@
                         <div class="meta-bottom">
                             <i class="bi bi-folder"></i>
                             <ul class="cats">
-                                <li><a href="#"><?= $blog['name_category']; ?></a></li>
+                                <li><a href="<?= base_url(); ?>/blog?cat=<?= $blog['name_category']; ?>"><?= $blog['name_category']; ?></a></li>
                             </ul>
                         </div><!-- End meta bottom -->
 
@@ -64,8 +64,8 @@
 
                         <div class="sidebar-item search-form">
                             <h3 class="sidebar-title">Search</h3>
-                            <form action="" class="mt-3">
-                                <input type="text">
+                            <form action="<?= base_url(); ?>/blog" class="mt-3" method="GET">
+                                <input type="text" name="search">
                                 <button type="submit"><i class="bi bi-search"></i></button>
                             </form>
                         </div><!-- End sidebar search formn-->

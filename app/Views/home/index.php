@@ -70,7 +70,7 @@
                                                 <td><?= $hm['description_home']; ?></td>
                                                 <td class="text-center">
                                                     <a href="<?= base_url(); ?>/uploads/home/<?= $hm['image_home']; ?>" class="image-link">
-                                                        <img src="<?= base_url(); ?>/uploads/home/<?= $hm['image_home']; ?>" class="rounded" height="30px;" width="30px" alt="">
+                                                        <img src="<?= base_url(); ?>/uploads/home/<?= $hm['image_home']; ?>" class="rounded" width="30px" alt="">
                                                     </a>
                                                 </td>
                                                 <td class="text-center">

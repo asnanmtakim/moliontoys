@@ -2,6 +2,8 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('plugin_css'); ?>
+<!-- summernote -->
+<link rel="stylesheet" href="<?= base_url() ?>/assets/admin/plugins/summernote/summernote-bs4.min.css">
 <link rel="stylesheet" href="<?= base_url() ?>/assets/admin/plugins/cropperjs/dist/cropper.css">
 <style>
     .image_area {
@@ -59,13 +61,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit Beranda</h1>
+                    <h1 class="m-0">Edit Halaman Tentang</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= base_url(); ?>">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="<?= base_url(); ?>/admin/home">Beranda</a></li>
-                        <li class="breadcrumb-item active">Edit Beranda</li>
+                        <li class="breadcrumb-item active">Edit Halaman Tentang</li>
                     </ol>
                 </div>
             </div><!-- /.row -->
@@ -82,43 +83,41 @@
                     <!-- Horizontal Form -->
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Data Beranda</h3>
+                            <h3 class="card-title">Edit Data Tentang</h3>
                             <div class="card-tools text-bold">
                                 * harus diisi.
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form class="form-horizontal" action="<?= base_url() ?>/admin/home-edit" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="id_home" value="<?= $home['id_home']; ?>">
-                            <input type="hidden" name="image_home_old" value="<?= $home['image_home']; ?>">
+                        <form class="form-horizontal" action="<?= base_url() ?>/admin/about" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id_about" value="<?= $about['id_about']; ?>">
+                            <input type="hidden" name="image_about_old" value="<?= $about['image_about']; ?>">
                             <?= csrf_field() ?>
                             <div class="card-body">
                                 <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <label for="title_home" class="col-sm-2 col-form-label">Judul*</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="title_home" name="title_home" value="<?= $home['title_home']; ?>" placeholder="Judul beranda">
-                                            </div>
-                                        </div>
+                                    <label for="description_about" class="col-sm-2 col-form-label">Info Singkat*</label>
+                                    <div class="col-sm-10">
+                                        <textarea type="text" class="form-control" id="description_about" name="description_about" placeholder="Info Singkat"><?= $about['description_about']; ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <label for="description_home" class="col-sm-2 col-form-label">Deskripsi*</label>
-                                            <div class="col-sm-10">
-                                                <textarea type="text" class="form-control" id="description_home" name="description_home" placeholder="Deskripsi beranda"><?= $home['description_home']; ?></textarea>
-                                            </div>
-                                        </div>
+                                    <label for="visi_about" class="col-sm-2 col-form-label">Visi*</label>
+                                    <div class="col-sm-10">
+                                        <textarea type="text" class="form-control" id="visi_about" name="visi_about" placeholder="Visi"><?= $about['visi_about']; ?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="gambar" class="col-sm-2 col-form-label">Gambar Beranda</label>
+                                    <label for="misi_about" class="col-sm-2 col-form-label">Misi*</label>
+                                    <div class="col-sm-10">
+                                        <textarea type="text" class="form-control" id="misi_about" name="misi_about" placeholder="Misi"><?= $about['misi_about']; ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="gambar" class="col-sm-2 col-form-label">Gambar Tentang</label>
                                     <div class="col-sm-10">
                                         <label for="upload_image">
-                                            <img src="<?= base_url(); ?>/uploads/home/<?= $home['image_home']; ?>" id="uploaded_image" class="img-responsive img-fluid" />
+                                            <img src="<?= base_url(); ?>/uploads/about/<?= $about['image_about']; ?>" id="uploaded_image" class="img-responsive img-fluid" style="max-width: 400px;" />
                                             <div class="overlay">
                                                 <div class="text">Klik Untuk Mengubah Gambar</div>
                                             </div>
@@ -132,8 +131,8 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Ubah Beranda</button>
-                                <a href="<?= base_url() ?>/admin/home" class="btn btn-default float-right">Kembali</a>
+                                <button type="submit" class="btn btn-primary">Ubah Tentang</button>
+                                <a href="<?= base_url() ?>/admin/about" class="btn btn-default float-right">Kembali</a>
                             </div>
                             <!-- /.card-footer -->
                         </form>
@@ -181,12 +180,27 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('plugin_js'); ?>
+<!-- Summernote -->
+<script src="<?= base_url() ?>/assets/admin/plugins/summernote/summernote-bs4.min.js"></script>
 <script src="<?= base_url() ?>/assets/admin/plugins/cropperjs/dist/cropper.js"></script>
 <?= $this->endSection(); ?>
 
 <?= $this->section('page_js'); ?>
 <script>
     $(document).ready(function() {
+        $('#description_about').summernote({
+            placeholder: 'Info Singkat',
+            height: 220
+        });
+        $('#visi_about').summernote({
+            placeholder: 'Visi',
+            height: 220
+        });
+        $('#misi_about').summernote({
+            placeholder: 'Misi',
+            height: 220
+        });
+
         var $modal = $('#modal');
         var image = document.getElementById('sample_image');
         var cropper;
@@ -235,7 +249,7 @@
 
         $("form").submit(function(e) {
             e.preventDefault();
-            var formData = $(this).serialize() + '&image_home=' + image_crop;
+            var formData = $(this).serialize() + '&image_about=' + image_crop;
             $.ajax({
                 url: $(this).attr("action"),
                 data: formData,
@@ -250,7 +264,7 @@
                             confirmButtonClass: "btn btn-info",
                             buttonsStyling: false,
                         }).then(function(_res_) {
-                            location.href = BASE_URL + "/admin/home";
+                            location.reload();
                         });
                     } else {
                         if (res.status == 400) {
@@ -260,7 +274,7 @@
                             $('.error-validation').html('');
                             frm.forEach(function(el, ind) {
                                 if (val[ind] != '') {
-                                    if (el == 'image_home') {
+                                    if (el == 'image_about') {
                                         $('.error-validation').html(val[ind]);
                                     }
                                     $('form #' + el).removeClass('is-invalid').addClass("is-invalid");

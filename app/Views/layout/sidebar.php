@@ -62,6 +62,15 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-header">Panel Pesan</li>
+                    <li class="nav-item">
+                        <a href="<?= base_url(); ?>/admin/contact" class="nav-link <?= $page == 'contact' ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-envelope-open-text"></i>
+                            <p>
+                                Pesan Masuk
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-header">Panel Halaman</li>
                     <li class="nav-item">
                         <a href="<?= base_url(); ?>/admin/home" class="nav-link <?= $page == 'home' ? 'active' : '' ?>">
@@ -132,15 +141,6 @@
                             <i class="nav-icon fab fa-facebook"></i>
                             <p>
                                 Sosmed
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-header">Panel Pesan</li>
-                    <li class="nav-item">
-                        <a href="<?= base_url(); ?>/admin/contact" class="nav-link <?= $page == 'contact' ? 'active' : '' ?>">
-                            <i class="nav-icon fas fa-envelope-open-text"></i>
-                            <p>
-                                Pesan Masuk
                             </p>
                         </a>
                     </li>

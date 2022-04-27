@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use Myth\Auth\Password;
+use Config\Email;
 
 class Admin extends BaseController
 {
@@ -14,6 +15,8 @@ class Admin extends BaseController
         $this->UserModel = new UserModel();
     }
 
+    // Dashboard
+    // ------------------------------------------------------------------------
     public function index()
     {
         if (logged_in()) {
@@ -26,7 +29,10 @@ class Admin extends BaseController
             return redirect()->to('/login');
         }
     }
+    // ------------------------------------------------------------------------
 
+    // Profile
+    // ------------------------------------------------------------------------
     public function indexProfile()
     {
         $db = \Config\Database::connect();
@@ -44,7 +50,6 @@ class Admin extends BaseController
         // dd($data);
         return view('profile/index', $data);
     }
-
     public function profileEdit()
     {
         if ($this->request->getPost('username') == user()->username) {
@@ -117,7 +122,6 @@ class Admin extends BaseController
             return redirect()->back()->with('tag', 'uprofil');
         }
     }
-
     public function profileEditImage()
     {
         // dd($this->request->getFile('image_user'));
@@ -161,7 +165,6 @@ class Admin extends BaseController
             return redirect()->back()->with('tag', 'ufoto');
         }
     }
-
     public function profileEditPassword()
     {
         if (!$this->validate([
@@ -207,19 +210,22 @@ class Admin extends BaseController
             return redirect()->to('/admin/profile')->with('tag', 'upassword');
         }
     }
+    // ---------------------------------------------------------------------------------
+    // End Profile
 
+    // Setting Apps
+    // ---------------------------------------------------------------------------------
     public function indexApps()
     {
         $appsModel = new \App\Models\AppsModel();
         $data = [
-            'title' => 'Tambah Beranda',
+            'title' => 'Tambah Aplikasi',
             'page' => 'apps',
             'apps' => $appsModel->orderBy('conf_order', 'ASC')->find(),
             'validation' => \Config\Services::validation()
         ];
         return view('apps/index', $data);
     }
-
     public function updateApps()
     {
         $validation = \Config\Services::validation();
@@ -258,7 +264,7 @@ class Admin extends BaseController
                 }
             }
             if ($query) {
-                session()->setFlashdata('message_success', 'Data Beranda Berhasil Diubah');
+                session()->setFlashdata('message_success', 'Data Aplikasi Berhasil Diubah');
                 echo json_encode(array('status' => 200, 'pesan' => 'Berhasil diubah !!'));
             } else {
                 echo json_encode(array('status' => 0, 'pesan' => 'Gagal diubah !!'));
@@ -270,7 +276,6 @@ class Admin extends BaseController
             echo json_encode(array('status' => 400, 'pesan' => $pesan));
         }
     }
-
     private function rulesValidationApps()
     {
         $config = [];
@@ -289,7 +294,11 @@ class Admin extends BaseController
         }
         return $config;
     }
+    // ---------------------------------------------------------------------------------
+    // End Setting Apps
 
+    // Home
+    // ---------------------------------------------------------------------------------
     public function indexHome()
     {
         $home = new \App\Models\HomeModel();
@@ -302,7 +311,6 @@ class Admin extends BaseController
         // dd($data);
         return view('home/index', $data);
     }
-
     public function addHome()
     {
         $data = [
@@ -312,7 +320,6 @@ class Admin extends BaseController
         ];
         return view('home/add', $data);
     }
-
     public function saveHome()
     {
         $validation = \Config\Services::validation();
@@ -356,7 +363,6 @@ class Admin extends BaseController
             echo json_encode(array('status' => 400, 'pesan' => $pesan));
         }
     }
-
     public function deleteHome()
     {
         $id_home = $this->request->getPost('id');
@@ -373,7 +379,6 @@ class Admin extends BaseController
             echo json_encode(array('status' => 0, 'pesan' => 'Gagal dihapus !!'));
         }
     }
-
     public function editHome($id_home)
     {
         $homeModel = new \App\Models\HomeModel();
@@ -389,7 +394,6 @@ class Admin extends BaseController
         ];
         return view('home/edit', $data);
     }
-
     public function updateHome()
     {
         $validation = \Config\Services::validation();
@@ -429,7 +433,6 @@ class Admin extends BaseController
             echo json_encode(array('status' => 400, 'pesan' => $pesan));
         }
     }
-
     private function rulesValidationHome()
     {
         $config = [
@@ -453,6 +456,166 @@ class Admin extends BaseController
 
         return $config;
     }
+    // ---------------------------------------------------------------------------------
+    // End Home
+
+    // About
+    // ---------------------------------------------------------------------------------
+    public function indexAbout()
+    {
+        $aboutModel = new \App\Models\AboutModel();
+        $about = $aboutModel->findAll()[0];
+        if (empty($about)) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Tentang tidak ditemukan.');
+        }
+        $data = [
+            'title' => 'Edit Tentang',
+            'page' => 'about',
+            'about' => $about,
+            'validation' => \Config\Services::validation()
+        ];
+        return view('about/index', $data);
+    }
+    public function updateAbout()
+    {
+        $validation = \Config\Services::validation();
+        $pesan = [];
+        if ($this->validate($this->rulesValidationAbout())) {
+            $data = [
+                'id_about' => $this->request->getPost('id_about'),
+                'description_about' => $this->request->getPost('description_about'),
+                'visi_about' => $this->request->getPost('visi_about'),
+                'misi_about' => $this->request->getPost('misi_about'),
+            ];
+            if ($this->request->getPost('image_about') != "undefined") {
+                $imageAbout = $this->request->getPost('image_about');
+                $imageAbout = str_replace('data:image/png;base64,', '', $imageAbout);
+                $imageAbout = str_replace(' ', '+', $imageAbout);
+                $dataImage = base64_decode($imageAbout);
+                $imageName = 'home_' . time() . '.png';
+                $pathName = 'uploads/about/' . $imageName;
+                file_put_contents($pathName, $dataImage);
+                if (file_exists('uploads/about/' . $this->request->getPost('image_about_old'))) {
+                    unlink('uploads/about/' . $this->request->getPost('image_about_old'));
+                }
+                $data['image_about'] = $imageName;
+            }
+
+            $aboutModel = new \App\Models\AboutModel();
+            $query = $aboutModel->save($data);
+            if ($query) {
+                session()->setFlashdata('message_success', 'Data Tentang Berhasil Diubah');
+                echo json_encode(array('status' => 200, 'pesan' => 'Berhasil diubah !!'));
+            } else {
+                echo json_encode(array('status' => 0, 'pesan' => 'Gagal diubah !!'));
+            }
+        } else {
+            $pesan['description_about'] = $validation->getError('description_about');
+            $pesan['visi_about'] = $validation->getError('visi_about');
+            $pesan['misi_about'] = $validation->getError('misi_about');
+            echo json_encode(array('status' => 400, 'pesan' => $pesan));
+        }
+    }
+    private function rulesValidationAbout()
+    {
+        $config = [
+            'description_about' => [
+                'label' => 'Info Singkat',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.',
+                ],
+            ],
+            'visi_about' => [
+                'label' => 'Visi',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.',
+                ],
+            ],
+            'misi_about' => [
+                'label' => 'Misi',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} harus diisi.',
+                ],
+            ]
+        ];
+
+        return $config;
+    }
+    // ---------------------------------------------------------------------------------
+    // End About
+
+    // Contact
+    // ---------------------------------------------------------------------------------
+    public function indexContact()
+    {
+        $contactsModel = new \App\Models\ContactsModel();
+        $data = [
+            'title' => 'Pesan Masuk',
+            'page' => 'contact',
+            'contact' => $contactsModel->getAllContact()
+        ];
+        return view('contact/index', $data);
+    }
+
+    function getOneContact()
+    {
+        $contactsModel = new \App\Models\ContactsModel();
+        $data = $contactsModel->find($this->request->getPost('id'));
+        if ($data) {
+            echo json_encode(array('status' => 200, 'pesan' => 'Berhasil ambil data !!', 'data' => $data));
+        } else {
+            echo json_encode(array('status' => 400, 'pesan' => 'Gagal ambil data !!'));
+        }
+    }
+    public function emailContact()
+    {
+        $contactsModel = new \App\Models\ContactsModel();
+        $id = $this->request->getPost('id');
+        $subject_email = $this->request->getPost('subject_email');
+        $balas = $this->request->getPost('balas');
+        if ($id == '' || $subject_email == '' || $balas == '') {
+            session()->setFlashdata('message_error', 'Silahkan cek inputan anda');
+            return redirect()->back();
+        }
+        $data = [
+            'id' => $id,
+            'subject_email' => $subject_email,
+            'balas' => $balas,
+        ];
+        $contactsModel->save($data);
+
+        $contact = $contactsModel->find($id);
+        $email = service('email');
+        $config = new Email();
+        $dataview = [
+            'subject' => $subject_email,
+            'message' => $balas,
+        ];
+        $sent = $email->setFrom($config->fromEmail, $config->fromName)
+            ->setTo($contact['email'])
+            ->setSubject($subject_email)
+            ->setMessage(view('auth/emails/email_contact', $dataview))
+            ->setMailType('html')
+            ->send();
+
+        if (!$sent) {
+            session()->setFlashdata('message_error', 'Gagal mengirim balasan email ke ' . $contact['email']);
+        } else {
+            $datastatus = [
+                'id' => $id,
+                'status' => 1,
+            ];
+            $contactsModel->save($datastatus);
+            session()->setFlashdata('message_success', 'Berhasil mengirim balasan email ke ' . $contact['email']);
+        }
+        return redirect()->back();
+    }
+    // ---------------------------------------------------------------------------------
+    // End Contact
+
 
     public function setSess()
     {

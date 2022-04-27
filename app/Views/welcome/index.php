@@ -67,37 +67,15 @@
                <div class="tab-content">
 
                   <div class="tab-pane fade show active" id="info">
-                     <p class="text-justify"><?= $about['description_about']; ?></p>
+                     <?= $about['description_about']; ?>
                   </div><!-- End Tab 1 Content -->
 
                   <div class="tab-pane fade show" id="visi">
-
-                     <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
-                     <div class="d-flex align-items-center mt-4">
-                        <i class="bi bi-check2"></i>
-                        <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-                     </div>
-                     <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-
-                     <div class="d-flex align-items-center mt-4">
-                        <i class="bi bi-check2"></i>
-                        <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                     </div>
-                     <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-
-                     <div class="d-flex align-items-center mt-4">
-                        <i class="bi bi-check2"></i>
-                        <h4>Omnis ab quia nemo dignissimos rem eum quos..</h4>
-                     </div>
-                     <p>Eius alias aut cupiditate. Dolor voluptates animi ut blanditiis quos nam. Magnam officia aut ut alias quo explicabo ullam esse. Sunt magnam et dolorem eaque magnam odit enim quaerat. Vero error error voluptatem eum.</p>
-
+                     <?= $about['visi_about']; ?>
                   </div><!-- End Tab 2 Content -->
 
                   <div class="tab-pane fade show" id="misi">
-
-                     <p class="fst-italic">Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-
+                     <?= $about['misi_about']; ?>
                   </div><!-- End Tab 3 Content -->
 
                </div>
@@ -368,7 +346,7 @@
             </div>
 
             <div class="col-lg-8">
-               <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+               <form action="<?= base_url(); ?>/sent-message" method="post" role="form" class="php-email-form">
                   <div class="row">
                      <div class="col-md-6 form-group">
                         <input type="text" name="name" class="form-control" id="name" placeholder="Nama" required>
@@ -381,7 +359,7 @@
                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Judul" required>
                   </div>
                   <div class="form-group mt-3">
-                     <textarea class="form-control" name="message" placeholder="Pesan" required></textarea>
+                     <textarea class="form-control" name="message" id="message" placeholder="Pesan" required></textarea>
                   </div>
                   <div class="my-3">
                      <div class="loading">Loading</div>

@@ -30,6 +30,23 @@ class BlogModel extends Model
         }
     }
 
+    public function getAllBlogbyCat($cat)
+    {
+        return $this->join('users', 'users.id = blog.id_user_blog')
+            ->join('category', 'category.id_category = blog.id_category')
+            ->where('category.name_category', $cat)
+            ->orderBy('date_blog', 'DESC');
+    }
+    public function getAllBlogbySearch($search)
+    {
+        return $this->join('users', 'users.id = blog.id_user_blog')
+            ->join('category', 'category.id_category = blog.id_category')
+            ->like('title_blog', $search)
+            ->orLike('description_blog', $search)
+            ->orLike('tag_blog', $search)
+            ->orderBy('date_blog', 'DESC');
+    }
+
     public function getRecentBlog($limit)
     {
         return $this->limit($limit)

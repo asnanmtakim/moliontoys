@@ -13,9 +13,13 @@ use App\Models\BlogModel;
 use App\Models\FaqModel;
 use App\Models\CategoryModel;
 use App\Models\CertificateModel;
+use App\Models\ContactsModel;
+use CodeIgniter\API\ResponseTrait;
+use Config\Services;
 
 class Welcome extends BaseController
 {
+    use ResponseTrait;
     protected $HomeModel;
     protected $AboutModel;
     protected $SosmedModel;
@@ -27,6 +31,7 @@ class Welcome extends BaseController
     protected $FaqModel;
     protected $CategoryModel;
     protected $CertificateModel;
+    protected $ContactsModel;
     public function __construct()
     {
         $this->HomeModel = new HomeModel();
@@ -40,6 +45,7 @@ class Welcome extends BaseController
         $this->FaqModel = new FaqModel();
         $this->CategoryModel = new CategoryModel();
         $this->CertificateModel = new CertificateModel();
+        $this->ContactsModel = new ContactsModel();
     }
 
     public function index()
@@ -87,7 +93,15 @@ class Welcome extends BaseController
     public function blog($slug = null)
     {
         if ($slug == null) {
-            $blog = $this->BlogModel->getAllBlog();
+            $cat = $this->request->getVar('cat');
+            $search = $this->request->getVar('search');
+            if ($cat != null) {
+                $blog = $this->BlogModel->getAllBlogbyCat($cat);
+            } elseif ($search != null) {
+                $blog = $this->BlogModel->getAllBlogbySearch($search);
+            } else {
+                $blog = $this->BlogModel->getAllBlog();
+            }
             $data = [
                 'sosmed' => $this->SosmedModel->where('active_sosmed', 1)->find(),
                 'blog' => $blog->paginate(4, 'blog'),
@@ -115,5 +129,19 @@ class Welcome extends BaseController
             // dd($data);
             return view('welcome/blog-detail', $data);
         }
+    }
+
+    public function form()
+    {
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'subject' => $this->request->getPost('subject'),
+            'message' => $this->request->getPost('message'),
+            'status' => 0,
+        ];
+        $this->ContactsModel->save($data);
+        session()->setFlashdata('message_success', 'Berhasil mengirimkan pesan.');
+        return $this->respondCreated();
     }
 }

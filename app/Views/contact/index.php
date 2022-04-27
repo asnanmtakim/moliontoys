@@ -131,7 +131,7 @@
                     </div>
                     <hr class="my-2">
                     <h5 class="text-bold text-center mb-3">Form Balasan</h5>
-                    <form action="<?= base_url(); ?>/contact-email" id="form-data" class="form" method="POST">
+                    <form action="<?= base_url(); ?>/admin/contact-email" id="form-data" class="form" method="POST">
                         <input type="hidden" name="id" id="id_contact">
                         <div class="row">
                             <label for="subject_email" class="col-sm-3 col-form-label">Subject Email</label>
@@ -189,7 +189,7 @@
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: BASE_URL + "/contact/getOneContact",
+                url: BASE_URL + "/admin/contact-one",
                 data: {
                     id: $(this).attr("data-id")
                 },
